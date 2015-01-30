@@ -1,0 +1,22 @@
+<% if(environment == "dev"){ %>
+
+<link rel="stylesheet" type="text/css" href="/css/global.css">
+
+<% } else if(environment == "prod") { %>
+
+<link rel="stylesheet" type="text/css" href="/css/global.min.css">
+
+<% } %>
+
+
+<% if(environment == "dev"){ %>
+
+<script src="/js/pre-init.js">
+
+<% } else if(environment == "prod") { %>
+
+<link rel="stylesheet" type="text/css" href="/js/pre-init.min.js">
+
+<% } %>
+
+
