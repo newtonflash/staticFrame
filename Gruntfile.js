@@ -22,7 +22,6 @@ module.exports = function(grunt) {
                         ],
                   '<%= meta.deployJS %>/ns.custom.min.js': 
                         [
-                          '<%= meta.srcJS %>/ns.services.js', 
                           '<%= meta.srcJS %>/ns.global.js'
                         ]
               }
