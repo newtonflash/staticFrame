@@ -2,41 +2,39 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         meta: {            
-            srcJS: 'public/js',
-            deployJS: 'public/js',
-            srcCSS: 'public/css',
-            deplyCSS:'public/css',
-            buildFolder : "application"
+            srcJSDir: 'public/js',
+            minJSDir: 'public/js/min',
+            srcCSSDir: 'public/css',
+            minCSSDir:'public/css/min',
+            buildFolder : "builds",
+            buildVersion:"0.1.0",
         },
         
         uglify: {
+          main:{
             options: {
               mangle: false              
             },
-            my_target: {
-              files: {
-                  '<%= meta.deployJS %>/ns.libs.min.js': 
-                        [
-                          '<%= meta.srcJS %>/libs/jquery-1.11.2.js', 
-                          '<%= meta.srcJS %>/libs/jquery.validate.js',                    
-                          '<%= meta.srcJS %>/ns.config.js'
-                        ],
-                  '<%= meta.deployJS %>/ns.custom.min.js': 
-                        [
-                          '<%= meta.srcJS %>/ns.global.js'
-                        ]
-              }
+            files: {
+                '<%= meta.minJSDir %>/ns.libs.min.js': 
+                      [
+                        '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js', 
+                        '<%= meta.srcJSDir %>/ns.config.js'
+                      ],
+                '<%= meta.minJSDir %>/ns.custom.min.js': 
+                      [
+                        '<%= meta.srcJSDir %>/libs/jquery.validate.js',                    
+                        '<%= meta.srcJSDir %>/ns.global.js'
+                      ]
             }
+          }
         },          
         cssmin: {
-          add_banner: {            
-            files: {
-              '<%= meta.deplyCSS %>/ns.global.min.css':
+              '<%= meta.minCSSDir %>/ns.global.min.css':
                      	  [
-                     	   '<%= meta.srcCSS %>/global.css',
-                     	   '<%= meta.srcCSS %>/modules.css'
+                     	   '<%= meta.srcCSSDir %>/global.css',
+                     	   '<%= meta.srcCSSDir %>/modules.css'
                      	  ]
-            }
         },
         clean: {
               folder: "builds/"
@@ -44,21 +42,20 @@ module.exports = function(grunt) {
         copy:{
              main: {
               files: [
-                // includes files within path
-                {expand: true, cwd: '', src: ['**'], dest: 'dest/'},
+                { expand: true,  cwd: 'public/css/min/' , src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/css/' },
+                { expand: true,  cwd: 'public/js/min/',   src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/js/' },
+                { expand: true,  cwd: 'public/images/',   src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/images/' },
+                { expand: true,  cwd: 'public/fonts/',    src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/fonts/' }
               ]
             }
         }
-      }
-       
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    // Default task.
-    //grunt.registerTask('default', ['concat']);
-    grunt.registerTask('default', ['uglify','cssmin',"clean"]);
+    
+    grunt.registerTask('default', ["uglify", "cssmin", "clean", "copy"]);
 
 };
