@@ -14,11 +14,11 @@ app.use('/images',express.static(path.join(__dirname, 'public/images')));
 app.use('/js',express.static(path.join(__dirname, 'public/js')));
 app.use('/css',express.static(path.join(__dirname, 'public/css')));
 
-app.set('view engine', 'ejs');
+app.set('view engine', siteConfig.templateEngine);
 
 require("./routes")(app, siteConfig, express);
 
-var server = app.listen(3100, function () {
+var server = app.listen(siteConfig.portNo, function () {
 
   var host = server.address().address
   var port = server.address().port

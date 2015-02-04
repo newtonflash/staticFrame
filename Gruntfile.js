@@ -5,7 +5,8 @@ module.exports = function(grunt) {
             srcJS: 'public/js',
             deployJS: 'public/js',
             srcCSS: 'public/css',
-            deplyCSS:'public/css'
+            deplyCSS:'public/css',
+            buildFolder : "application"
         },
         
         uglify: {
@@ -26,7 +27,7 @@ module.exports = function(grunt) {
                         ]
               }
             }
-          },          
+        },          
         cssmin: {
           add_banner: {            
             files: {
@@ -36,13 +37,28 @@ module.exports = function(grunt) {
                      	   '<%= meta.srcCSS %>/modules.css'
                      	  ]
             }
-          }
+        },
+        clean: {
+              folder: "builds/"
+        },
+        copy:{
+             main: {
+              files: [
+                // includes files within path
+                {expand: true, cwd: '', src: ['**'], dest: 'dest/'},
+              ]
+            }
         }
+      }
+       
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     // Default task.
     //grunt.registerTask('default', ['concat']);
-    grunt.registerTask('default', ['uglify','cssmin',]);
+    grunt.registerTask('default', ['uglify','cssmin',"clean"]);
+
 };
