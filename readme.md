@@ -1,6 +1,14 @@
+# STATICFRAME 0.1.0
+> Structural framework for building static websites
+
+## About it
+This is a structural framework to get started with, which provide some best practices, library files, grunt task setups. This is based on Node and ruby(SASS engine). This framework is to create static/dynamic HTML files.
+
+
 Folder structure:
 
 Application             : Keep all public api calls, json/XML files here.
+.
 Resources               
     |- scss             : SASS/LESS files.
     |- sprite-source    : sprite psd files
