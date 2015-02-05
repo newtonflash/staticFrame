@@ -59,6 +59,11 @@ app.js                  : Node root file to start the server.
 	
 ### Javascript
 
+##### Beter coding practices
+1. Try to use "use strict" in your modules where ever possible.
+2. Use jshint to validate your code. You can use the plugins in your notepad++ or sublime editors
+
+
 #### Implementation of publish - subscribe pattern
 For event decoupling we recommend publish - subscriber pattern. To publish a custom event, use the publish function. Sample code is as below.
 
