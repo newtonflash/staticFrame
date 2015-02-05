@@ -7,13 +7,14 @@ This is a structural framework to get started with, which provide some best prac
 
 Folder structure:
 
+```shell
 Application             : Keep all public api calls, json/XML files here.
 .
 Resources               
     |- scss             : SASS/LESS files.
     |- sprite-source    : sprite psd files
 
-
+```
 
 /** ==================================================================================
 	LIBRARY/TECHNOLOGY USED
