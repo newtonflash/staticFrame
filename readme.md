@@ -4,6 +4,11 @@
 ## About it
 This is a structural framework to get started with, which provide some best practices, library files, grunt task setups. This is based on Node and ruby(SASS engine). This framework is to create static/dynamic HTML files.
 
+### Features
+1. Provides setup for HTML projects
+2. Some standard css(bootstrap, reset) javascript(jquery) library included.
+3. Based on modular approach for javascript
+
 
 Folder structure:
 
@@ -42,7 +47,7 @@ app.js                  : Node root file to start the server.
 5. JS form validation				: jQuery validator
 
 
-##	HELPFUL COMMANDS
+##	Helpful commands
 
 1. To install new node module		: npm install
 2. Run grunt task					: grunt
@@ -53,5 +58,19 @@ app.js                  : Node root file to start the server.
 ##Guidelines
 	
 ### Javascript
+
+#### Implementation of publish - subscribe pattern
+For event decoupling we recommend publish - subscriber pattern. To publish a custom event, use the publish function. Sample code is as below.
+
+```js
+$.publish(NameSpace.events.RESIZE);
+```
+
+And to capture this event:
+```js
+$.subscribe(NameSpace.events.RESIZE, function(evt){
+	//write your function body here
+})
+```
 
 ### CSS
