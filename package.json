@@ -18,6 +18,13 @@
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-clean": "*",
-    "grunt-contrib-copy": "*"
+    "grunt-contrib-copy": "*",
+     "grunt-contrib-jshint": "0.11.0",
+    "grunt-contrib-csslint": "*",
+    "jshint-html-reporter":"*",
+    "grunt-open": "*",
+    "grunt-accessibility":"*"
+
+
   }
 }

@@ -48,14 +48,69 @@ module.exports = function(grunt) {
                 { expand: true,  cwd: 'public/fonts/',    src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/fonts/' }
               ]
             }
+        },
+        accessibility: {
+            options : {
+                accessibilityLevel: 'WCAG2A',
+                verbose: false,
+                outputFormat:"json"
+            },
+            test : {
+              src: ['http://localhost:3100/index.html']
+            }
+        },
+        csslint: {
+            options: {
+              csslintrc: '.csslintrc'
+
+            },
+            lax: {
+              options: {
+                import: false
+              },
+              src: ['<%= meta.srcCSSDir %>/global.css']
+            }
+        },
+        jshint: {
+          dev:{
+              options: {
+                  reporter: require('jshint-html-reporter'),
+                  reporterOutput: 'views/dev-jshint-report.html',
+                  force:true
+              },
+              files: {
+                src:['public/js/*.js']
+              }
+          },
+          build:{
+              options: {
+                  reporter: require('jshint-html-reporter'),
+                  reporterOutput: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>jshint-report.html'
+              },
+              all: ['<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/js/**/*.js']
+          }
+        },
+        open:{
+              dev : {
+                  path: 'http://localhost:3100/dev-jshint-report.html'
+              }
         }
+
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    
-    grunt.registerTask('default', ["uglify", "cssmin", "clean", "copy"]);
+    //grunt.loadNpmTasks('grunt-accessibility');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-open');
+
+
+    grunt.registerTask("dev", ["uglify", "cssmin", "clean", "copy", "jshint:dev", "open:dev"])
+    grunt.registerTask("dev-css", ["csslint"]);
+    grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build"]);
+    grunt.registerTask('default', ["jshint:dev"]);
 
 };

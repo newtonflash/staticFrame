@@ -53,6 +53,7 @@ app.js                  : Node root file to start the server.
 2. Run grunt task					: grunt
 3. compile scss files				: compass watch
 4. run the application server		: node app
+5. validate user credentials        :sudo chown -R $(whoami) ~/.npm
 
 
 ##Guidelines

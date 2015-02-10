@@ -1,7 +1,7 @@
 var config = {
 	"environment" 		:"dev",
 	"portNo"			:"3100",
-	"templateEngine" 	:"ejs",
+	"templateEngine" 	:"html",
 	"siteName"     		:"Website name",
 	"author"       		:"author name",
 	"version"	   		:"1.0.0"
