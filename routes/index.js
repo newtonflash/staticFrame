@@ -5,7 +5,7 @@ module.exports = function (app, siteConfig, express){
 			res.render(fullUrl, siteConfig);
 		}
 	});
-	
+
 	app.get("/", function(req, res){
 		res.render('index', siteConfig);
 	});

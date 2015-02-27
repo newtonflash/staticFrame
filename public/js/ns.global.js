@@ -11,7 +11,8 @@
 NameSpace.global = (function($, ns, window, document, undefined){
 	var _global = function(){
 		this.init = function(){
-
+			initEventListeners();
+			initEventTriggers();
 		};
 
 		var initEventListeners = function(){
@@ -23,4 +24,7 @@ NameSpace.global = (function($, ns, window, document, undefined){
 		};
 	}
 	return new _global();
+
+	$.subscribe(ns.events.INIT_MODULES, ns.global.init);
+
 })((typeof jQuery !== "undefined") ? jQuery : null, NameSpace || {}, window, window.document);

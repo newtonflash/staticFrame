@@ -53,12 +53,14 @@ app.js                  : Node root file to start the server.
 2. Run grunt task					: grunt
 3. compile scss files				: compass watch
 4. run the application server		: node app
-5. validate user credentials        :sudo chown -R $(whoami) ~/.npm
+5. validate user credentials        : sudo chown -R $(whoami) ~/.npm
 
 
 ##Guidelines
 	
 ### Javascript
+Change namespace names for your project in all js files. Currently it's read as "NameSpace".
+
 
 ##### Beter coding practices
 1. Try to use "use strict" in your modules where ever possible.
@@ -80,3 +82,30 @@ $.subscribe(NameSpace.events.RESIZE, function(evt){
 ```
 
 ### CSS
+
+
+
+### Grunt Automation
+A grunt file is provided with basic set of automation work. Modify it according to your need.
+
+The default setup provides the following functionality:
+
+1. Uglification of Javascript, css minification, jshint error reporting for your dev environment
+
+```shell
+$grunt dev
+```
+1. Uglification of Javascript, css minification, jshint error reporting, build creation for static assets.
+
+```shell
+$grunt build
+```
+
+
+
+
+
+
+
+
+
