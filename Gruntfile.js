@@ -102,14 +102,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    //grunt.loadNpmTasks('grunt-accessibility');
+    grunt.loadNpmTasks('grunt-accessibility');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-open');
 
-
-    grunt.registerTask("dev", ["uglify", "cssmin", "clean", "copy", "jshint:dev", "open:dev"])
+    grunt.registerTask("dev", ["uglify", "cssmin", "jshint:dev", "open:dev"])
     grunt.registerTask("dev-css", ["csslint"]);
+    grunt.registerTask("dev-acc", ["accessibility"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build"]);
     grunt.registerTask('default', ["jshint:dev"]);
 
