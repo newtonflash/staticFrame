@@ -38,6 +38,6 @@
 		$.subscribe(ns.events.INIT_MODULES, this.init);
 	};
 
-	NameSpace.global = new _global();
+	ns.global = new _global();
 
 })((typeof jQuery !== "undefined") ? jQuery : null, NameSpace || {}, window, window.document);
