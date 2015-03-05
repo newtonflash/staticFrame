@@ -8,23 +8,36 @@
  * 	@site       < site name >
  */
 
-NameSpace.global = (function($, ns, window, document, undefined){
+ (function($, ns, window, document, undefined){
+	
+	"use strict";
+
 	var _global = function(){
 		this.init = function(){
 			initEventListeners();
 			initEventTriggers();
 		};
 
+		/**
+		 *	add all event listeners
+		 */
 		var initEventListeners = function(){
-
+			
 		};
 		
+		/**
+		 *	put all event triggers, plugin initializations
+		 */
 		var initEventTriggers = function(){
 
 		};
-	}
-	return new _global();
 
-	$.subscribe(ns.events.INIT_MODULES, ns.global.init);
+		/**
+		 * Initialize this object when document ready event is triggered
+		 */
+		$.subscribe(ns.events.INIT_MODULES, this.init);
+	};
+
+	NameSpace.global = new _global();
 
 })((typeof jQuery !== "undefined") ? jQuery : null, NameSpace || {}, window, window.document);
