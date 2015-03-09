@@ -27,7 +27,5 @@
     "grunt-contrib-compass":"*",
     "grunt-contrib-watch": "*",
     "grunt-express-server": "*"
-
-
   }
 }

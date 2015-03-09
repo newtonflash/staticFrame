@@ -148,8 +148,8 @@ module.exports = function(grunt) {
      *  grunt                       : start the server & watch scss
      *  grunt report                : creates js hint report
      *  grunt report-css            : creates CSSlint report
-     *  grunt build                 :
-     *  grunt dev-minify            : 
+     *  grunt build                 : it uglifies, minifies, cleans build directory and creates a new build file.
+     *  grunt dev-minify            : minifies and uglifies css and js files.
      *
      *  OPTIONAL
      * --------------------------------------------------------
@@ -162,10 +162,11 @@ module.exports = function(grunt) {
     grunt.registerTask("report", ["jshint:dev", "open:report"]);
     grunt.registerTask("report-css", ["csslint"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build"]);
-    grunt.registerTask("dev-minify", ["uglify", "cssmin"])
-    grunt.registerTask("watch-sass", ["watch:compass"])
-    
+    grunt.registerTask("dev-minify", ["uglify", "cssmin"]);
+   
+    //OPTIONAL
     grunt.registerTask("dev-acc", ["accessibility"]);
+    grunt.registerTask("watch-sass", ["watch:compass"])
     
 
 };
