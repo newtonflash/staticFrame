@@ -92,7 +92,41 @@ module.exports = function(grunt) {
         },
         open:{
               dev : {
-                  path: 'http://localhost:3100/dev-jshint-report.html'
+                  path: 'http://localhost:3100/'
+              },
+              report:{
+                  path: 'http://localhost:3100/dev-jshint-report.html' 
+              }
+        },
+        compass: {
+              compiled: {
+                    options: {
+                          sassDir: 'resources/scss',
+                          cssDir: 'public/css/',
+                          imagesDir: 'public/images',
+                          javascriptsDir: 'public/js',
+                          fontsDir: 'public/fonts',
+                          relativeAssets: true,
+                          outputStyle: "expanded", // optional : nested, expanded, compact, compressed,
+                          noLineComments : true
+                    }
+              }
+        },
+        express: {
+              dev :{
+                options: {
+                    script: 'app.js'
+                }
+              }
+        },
+        watch: {
+              compass :{
+                    files: ['resources/scss/**'],
+                    tasks: ['compass:compiled']
+              },
+              express:{
+                    files:  ['app.js'],
+                    tasks:  ['express:dev']
               }
         }
 
@@ -106,11 +140,32 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
 
-    grunt.registerTask("dev", ["uglify", "cssmin", "jshint:dev", "open:dev"])
-    grunt.registerTask("dev-css", ["csslint"]);
-    grunt.registerTask("dev-acc", ["accessibility"]);
+    /**
+     *  grunt                       : start the server & watch scss
+     *  grunt report                : creates js hint report
+     *  grunt report-css            : creates CSSlint report
+     *  grunt build                 :
+     *  grunt dev-minify            : 
+     *
+     *  OPTIONAL
+     * --------------------------------------------------------
+     *  grunt watch-sass            : watches scss files - run this only when you start node sever with node command
+     *  
+     */
+
+    
+    grunt.registerTask('default', ["express:dev", "watch"]);
+    grunt.registerTask("report", ["jshint:dev", "open:report"]);
+    grunt.registerTask("report-css", ["csslint"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build"]);
-    grunt.registerTask('default', ["jshint:dev"]);
+    grunt.registerTask("dev-minify", ["uglify", "cssmin"])
+    grunt.registerTask("watch-sass", ["watch:compass"])
+    
+    grunt.registerTask("dev-acc", ["accessibility"]);
+    
 
 };

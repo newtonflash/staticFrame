@@ -23,7 +23,10 @@
     "grunt-contrib-csslint": "*",
     "jshint-html-reporter":"*",
     "grunt-open": "*",
-    "grunt-accessibility":"*"
+    "grunt-accessibility":"*",
+    "grunt-contrib-compass":"*",
+    "grunt-contrib-watch": "*",
+    "grunt-express-server": "*"
 
 
   }

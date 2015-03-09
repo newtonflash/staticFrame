@@ -11,13 +11,17 @@ body{
 	font-family: Arial, helvetica, sans-serif;
 	font-size: 14px;  //recomend it to be in pixels
 	line-height: 1.5em; 
-
+	background-color: $BODY_BG_COLOR;
 }
 
 
 
 a{
+
 	&:hover{
+
+	}
+	&:focus{
 
 	}
 }
@@ -29,6 +33,8 @@ p {
 table{
 
 }
+
+
 
 
 

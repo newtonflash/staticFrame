@@ -95,7 +95,15 @@
 			"file": "public/js/ns.global.js",
 			"settings":
 			{
-				"buffer_size": 630,
+				"buffer_size": 820,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/ns.utilitis.js",
+			"settings":
+			{
+				"buffer_size": 89,
 				"line_ending": "Unix"
 			}
 		}
@@ -406,6 +414,7 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -413,21 +422,47 @@
 					"file": "public/js/ns.global.js",
 					"settings":
 					{
-						"buffer_size": 630,
+						"buffer_size": 820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								700,
+								700
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/js/ns.utilitis.js",
+					"settings":
+					{
+						"buffer_size": 89,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								81,
+								81
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
