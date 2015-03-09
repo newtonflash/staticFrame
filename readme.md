@@ -9,6 +9,9 @@ This is a structural framework to get started with, which provide some best prac
 2. Some standard css(bootstrap, reset) javascript(jquery) library included.
 3. Based on modular approach for javascript
 
+### Dependencies
+1. SASS - You need to have ruby and compass installed in your machine with global path setup
+
 
 Folder structure:
 
