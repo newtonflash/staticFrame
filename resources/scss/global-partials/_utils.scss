@@ -14,8 +14,11 @@
 .fr{float:right !important;}
 .fl{float:left !important;}
 .last{margin-right:0 !important; border-right:0 !important;}
-img.scaleW{ width:100%; height:auto;}
-img.scaleH{height:100%;width:auto;}
+img.scale-w{ width:100%; height:auto;}
+img.scale-h{height:100%;width:auto;}
 .header .logo img.scaleH{width:100%; height: auto; margin:auto;}
-img.maxW{max-width:100%;}
-img.maxH{max-height:100%;}
+img.max-w{max-width:100%;}
+img.max-h{max-height:100%;}
+.no-margin{margin:0 !important;}
+.no-margin-left{margin-left:0 !important;}
+.no-margin-right{margin-right:0 !important;}
