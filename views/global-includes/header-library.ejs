@@ -1,8 +1,18 @@
+<!-- for simplicity we have taken the respond and match media polyfills directly as minified files and we recomend to exclude them from your header javascript library -->
+
+<!--[if lt IE 9]>
+	<script src="/js/min/respond.min.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 10]>
+	<script>window.matchMedia = null;</script>
+	<script src="/js/min/media.match.min.js" type="text/javascript"></script>
+<![endif]-->
+
 <% if(environment == "dev"){ %>
 	<link rel="stylesheet" type="text/css" href="/css/global.css">
 	<script src="/js/libs/jquery-1.11.2.js"></script>
-	<script src="/js/preinit.js"></script>
+	<script src="/js/ns.preinit.js"></script>
 <% } else if(environment == "prod") { %>
-	<link rel="stylesheet" type="text/css" href="/css/global.min.css">
-	<link rel="stylesheet" type="text/css" href="/js/preinit.min.js" />
+	<link rel="stylesheet" type="text/css" href="/css/min/global.min.css">
+	<link rel="stylesheet" type="text/css" href="/js/min/ns.header.min.js" />
 <% } %>

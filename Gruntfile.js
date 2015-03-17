@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 '<%= meta.minJSDir %>/ns.libs.min.js': 
                       [
                         '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js', 
-                        '<%= meta.srcJSDir %>/ns.config.js'
+                        '<%= meta.srcJSDir %>/ns.preinit.js'
                       ],
                 '<%= meta.minJSDir %>/ns.custom.min.js': 
                       [

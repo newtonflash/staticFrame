@@ -12,6 +12,24 @@ This is a structural framework to get started with, which provide some best prac
 ### Dependencies
 1. SASS - You need to have ruby and compass installed in your machine with global path setup
 
+### Installation
+Unpack the code in your favorite location. Preferably in projects folder. If you have node and sass already installed, then in your command line goto the project directory and run 
+
+```shell
+grunt server
+```
+Now you can access your server in the browser with http://localhost:3100 . The default port no is set as 3100, which you can alter in your site-config file.
+
+#### Node
+Download and install node in your system
+
+#### SASS 
+For SASS you need to install ruby. For the current setup we recomend using 1.9.1 
+and for compiling SASS we are using compass which can be installed with the following command
+
+```shell
+gems install compass
+```
 
 Folder structure:
 
