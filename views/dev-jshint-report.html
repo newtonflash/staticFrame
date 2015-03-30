@@ -2,27 +2,96 @@
 <html lang="en">
 <head>
     <title>JSHint Report</title>
-
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style type="text/css">
+    body{
+        background: rgb(122,122,122);
+    }
+    table{
+         background:white;
+    }
+    .index{
+          width: 20%;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 0;
+    } 
+    .results{
+          position: relative;
+          display: inline-block;
+          width: 70%;
+          left: 20%;
+    } 
+    h2{
+        color: white;
+    }
+    ul{
+        list-style-type: none;
+        margin-top: 60px;
+    }
+    ul li{
+        height: 40px;
+        width:100%;
+        border: 1px solid black;
+        cursor:pointer;
+        background: gray;
+        margin-bottom: 3px;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-weight: bolder;
+        color:white;
+        font-size: 20px;
+    }
+    ul li:hover{
+        background: white;
+        color:black;
+    }
+
+    @media screen and (max-width: 640px){
+        .index{
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 0;
+            left: 0;
+        } 
+        .results{
+            width: 100%;
+            position: relative;
+            display:block;
+            width: 100%;
+            left: 0;
+        } 
+    }
+    </style>
 </head>
 <body>
-
 <div class="container-fluid">
-    <table class="table table-hover">
-        <tr>
-            <th class="text-center">Code</th>
-            <th class="text-center">Line</th>
-            <th class="text-center">Column</th>
-            <th>Evidence</th>
-            <th>Reason</th>
-        </tr>
-        <tr><td colspan="5"><b>../public/js/ns.global.js</b></td></tr><tr class="warning">
-    <td class="text-center">W033</td>
-    <td class="text-center">25</td>
-    <td class="text-center">6</td>
-    <td><code>	&#125;</code></td>
-    <td>Missing semicolon.</td>
-</tr><tr><td colspan="5"><b>../public/js/preinit.js</b></td></tr><tr class="warning">
+
+    <div class="index">
+        <ul>  
+        </ul>
+    </div>
+    <div class="results">
+    <h2> </h2>
+        <table class="table table-hover">
+            <tr>
+                <th class="text-center">Code</th>
+                <th class="text-center">Line</th>
+                <th class="text-center">Column</th>
+                <th>Evidence</th>
+                <th>Reason</th>
+            </tr>
+            <tr class="file-name"><td colspan="5"><b>../public/js/ns.global.js</b></td></tr>
+<tr class="warning">
+    <td class="text-center">W055</td>
+    <td class="text-center">41</td>
+    <td class="text-center">21</td>
+    <td><code>	ns.global &#61; new _global&#40;&#41;;</code></td>
+    <td>A constructor name should start with an uppercase letter.</td>
+</tr><tr class="file-name"><td colspan="5"><b>../public/js/ns.preinit.js</b></td></tr>
+<tr class="warning">
     <td class="text-center">W014</td>
     <td class="text-center">24</td>
     <td class="text-center">43</td>
@@ -238,12 +307,53 @@
     <td class="text-center">153</td>
     <td><code>Array.move||&#40;Array.prototype.move&#61;function&#40;b&#44;a&#41;&#123;if&#40;a&gt;&#61;this.length&#41;for&#40;var c&#61;a-this.length;c--&#43;1;&#41;this.push&#40;void 0&#41;;this.splice&#40;a&#44;0&#44;this.splice&#40;b&#44;1&#41;&#91;0&#93;&#41;&#125;&#41;;</code></td>
     <td>Expected an assignment or function call and instead saw an expression.</td>
+</tr><tr class="file-name"><td colspan="5"><b>../public/js/ns.utilitis.js</b></td></tr>
+<tr class="warning">
+    <td class="text-center">W033</td>
+    <td class="text-center">8</td>
+    <td class="text-center">7</td>
+    <td><code> 	&#125;</code></td>
+    <td>Missing semicolon.</td>
+</tr><tr class="warning">
+    <td class="text-center">W033</td>
+    <td class="text-center">9</td>
+    <td class="text-center">3</td>
+    <td><code> &#125;</code></td>
+    <td>Missing semicolon.</td>
 </tr>
-    </table>
-    <div class="well">
-    Found <span class="label label-default">37</span> failures - <span class="label label-danger">0 errors</span> &amp; <span class="label label-warning">37 warnings</span>
+        </table>
+    </div>
 </div>
-</div>
-
 </body>
+<script src="/js/libs/jquery-1.11.2.js"></script>
+<script>
+window.onload = function(){
+        var list  = document.getElementsByClassName('file-name');
+        console.log(list);
+        var filelist = document.getElementsByTagName('ul')[0];
+        console.log(filelist);
+        for (i=0;i<list.length;i++){
+            console.log(list[i].outerText);
+            var listitem = document.createElement("li");
+            var textitem = document.createTextNode(list[i].outerText.split("\\").pop());
+            listitem.appendChild(textitem);
+            filelist.appendChild(listitem);
+            listitem.setAttribute("class",i);
+        }
+        $("tr").hide();
+        $("tr").eq(0).show();
+        $(".file-name").eq(0).nextUntil( ".file-name" ).show();
+        $(".results h2").eq(0).html("File Name Selected :: "+list[0].outerText.split("\\").pop());
+        
+        $("li").on("click", function(event){
+            $(".results h2").eq(0).html("File Name Selected :: "+event.target.outerText.split("\\").pop());
+            console.log(event.target.outerText);
+            var index = parseInt(event.target.getAttribute("class"));
+            $("tr").hide();
+            $("tr").eq(0).show();
+            $(".file-name").eq(index).nextUntil( ".file-name" ).show(); 
+
+        })
+}
+</script>
 </html>

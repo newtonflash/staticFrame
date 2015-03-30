@@ -1,9 +1,10 @@
 @charset "utf-8";
 
-@import "global-partials/mixins";
+@import "libs/staticframe/pre-init";
+@import "libs/staticframe/utils";
+@import "libs/bootstrap/bootstrap";
+
 @import "global-partials/constants";
-@import "global-partials/pre-init";
-@import "global-partials/utils";
-@import "global-partials/defaults";
-@import "global-partials/libs/bootstrap";
+@import "global-partials/mixins";
+@import "components/defaults";
 @import "components/global-components";

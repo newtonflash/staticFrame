@@ -99,6 +99,80 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "views/index.html",
+			"settings":
+			{
+				"buffer_size": 490,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/components/global-components/html-header.ejs",
+			"settings":
+			{
+				"buffer_size": 1893,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "resources/scss/themes/_default.scss",
+			"file_size": 0,
+			"file_write_time": 1427434169000000,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/scss/themes/default/_theme.scss",
+			"settings":
+			{
+				"buffer_size": 20,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/scss/themes/default/_constants.scss",
+			"settings":
+			{
+				"buffer_size": 239,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/scss/global-partials/_constants.scss",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/scss/global.scss",
+			"settings":
+			{
+				"buffer_size": 272,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/scss/components/_global-components.scss",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -124,15 +198,22 @@
 	},
 	"file_history":
 	[
+		"/Volumes/DATA/www/staticFrame/views/sample-page.html",
+		"/Volumes/DATA/www/staticFrame/readme.md",
+		"/Volumes/DATA/www/staticFrame/views/global-includes/html-header.ejs",
+		"/Volumes/DATA/www/staticFrame/views/global-includes/header-library.ejs",
+		"/Volumes/DATA/www/staticFrame/views/global-includes/content-header.ejs",
+		"/Volumes/DATA/www/staticFrame/resources/scss/global.scss",
+		"/Volumes/DATA/www/staticFrame/resources/scss/modules/_carousel.scss",
+		"/Volumes/DATA/www/staticFrame/Gruntfile.js",
+		"/Volumes/DATA/www/staticFrame/views/pucli.html",
+		"/Volumes/DATA/www/staticFrame/public/js/preinit.js",
 		"/Volumes/DATA/www/staticFrame/resources/scss/global-partials/_utils.scss",
 		"/Volumes/DATA/www/staticFrame/resources/scss/components/_global-components.scss",
-		"/Volumes/DATA/www/staticFrame/resources/scss/global.scss",
 		"/Volumes/DATA/www/staticFrame/resources/scss/global-partials/_global-tags.scss",
-		"/Volumes/DATA/www/staticFrame/Gruntfile.js",
 		"/Volumes/DATA/www/staticFrame/package.json",
 		"/Volumes/DATA/www/staticFrame/config.rb",
 		"/Volumes/DATA/www/staticFrame/resources/scss/global-partials/_constants.scss",
-		"/Volumes/DATA/www/staticFrame/readme.md",
 		"/Volumes/DATA/www/staticFrame/app.js",
 		"/Volumes/DATA/www/staticFrame/node_modules/grunt-express-server/tasks/express.js",
 		"/Volumes/DATA/www/staticFrame/public/js/ns.utilitis.js",
@@ -171,7 +252,6 @@
 		"/Volumes/DATA/www/staticFrame/routes/index.js",
 		"/Volumes/DATA/www/staticFrame/views/404.html",
 		"/Volumes/DATA/www/staticFrame/views/404.ejs",
-		"/Volumes/DATA/www/staticFrame/views/sample-page.html",
 		"/Volumes/DATA/www/staticFrame/dev-jshint-report.html",
 		"/Volumes/DATA/www/staticFrame/site-config.js",
 		"/Volumes/DATA/www/staticFrame/views/index.ejs",
@@ -245,13 +325,7 @@
 		"/Volumes/DATA/www/htdocs/test/assets/css/nf.style.css",
 		"/Volumes/DATA/www/htdocs/test/assets/js/jquery.js",
 		"/Volumes/DATA/www/htdocs/test/dynamic/_home.scss",
-		"/Volumes/DATA/www/htdocs/test/dynamic/nf.style.scss",
-		"/Volumes/DATA/www/htdocs/test/dynamic/_global.scss",
-		"/Volumes/DATA/www/htdocs/test/dynamic/_pricing.scss",
-		"/Volumes/DATA/www/htdocs/test/contact.html",
-		"/Volumes/NO NAME/cookie js.txt",
-		"/Volumes/DATA/www/htdocs/test/dynamic/_mixins.scss",
-		"/Volumes/DATA/www/htdocs/test/dynamic/config.rb"
+		"/Volumes/DATA/www/htdocs/test/dynamic/nf.style.scss"
 	],
 	"find":
 	{
@@ -272,6 +346,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\n/global-includes",
 			":focus",
 			"rw/public",
 			"FRMS",
@@ -409,6 +484,241 @@
 		{
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "views/index.html",
+					"settings":
+					{
+						"buffer_size": 490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								396,
+								396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/components/global-components/html-header.ejs",
+					"settings":
+					{
+						"buffer_size": 1893,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1863,
+								1863
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/scss/themes/_default.scss",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/scss/themes/default/_theme.scss",
+					"settings":
+					{
+						"buffer_size": 20,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								18
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/scss/themes/default/_constants.scss",
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								219,
+								219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/Volumes/DATA/www/staticFrame/resources/scss/themes/default",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "resources/scss/global-partials/_constants.scss",
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "resources/scss/global.scss",
+					"settings":
+					{
+						"buffer_size": 272,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								220,
+								233
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "resources/scss/components/_global-components.scss",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Syntax Highlighting for Sass/Syntaxes/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

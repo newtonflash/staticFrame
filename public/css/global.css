@@ -1,3 +1,6 @@
+/**
+ *   StaticFrame browser reset code
+ */
 * {
   margin: 0;
   padding: 0;
@@ -402,12 +405,12 @@ code {
   border-right: 0 !important;
 }
 
-img.scaleW {
+img.scale-w {
   width: 100%;
   height: auto;
 }
 
-img.scaleH {
+img.scale-h {
   height: 100%;
   width: auto;
 }
@@ -418,22 +421,24 @@ img.scaleH {
   margin: auto;
 }
 
-img.maxW {
+img.max-w {
   max-width: 100%;
 }
 
-img.maxH {
+img.max-h {
   max-height: 100%;
 }
 
-/** style all global level elements, 
-	some of the styles are already written change 
-	them according to your taste. */
-body {
-  font-family: Arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.5em;
-  background-color: #f0f0f0;
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-margin-left {
+  margin-left: 0 !important;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
 }
 
 * {
@@ -1598,4 +1603,15 @@ body {
   .hidden-print {
     display: none !important;
   }
+}
+/**
+ *	Put default settings for html elements for your website. These style should work, if it does not carry any other class
+ */
+body {
+  font: 14px/1.5em;
+  background-color: white;
+}
+
+p {
+  margin-bottom: .5em;
 }
