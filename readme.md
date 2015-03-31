@@ -121,25 +121,22 @@ A grunt file is provided with basic set of automation work. Modify it according 
 
 The default setup provides the following functionality:
 
-1. Default Actions :: Start Server and watch for modifications 
-
+Default Actions :: Start Server and watch for modifications 
 ```shell
 $grunt
 ```
 
-2. Report :: Generate JSHINT Report and open dev-jshint-report.html 
-
+Report :: Generate JSHINT Report and open dev-jshint-report.html 
 ```shell
 $grunt report
 ```
 
-3. Build :: Uglification of Javascript, css minification, jshint error reporting for your dev environment 
-
+Build :: Uglification of Javascript, css minification, jshint error reporting for your dev environment 
 ```shell
 $grunt build
 ```
 
-4. Minification :: Uglification of Javascript and  CSS minification only
+Minification :: Uglification of Javascript and  CSS minification only
 ```shell
 $grunt dev-minify
 ```
