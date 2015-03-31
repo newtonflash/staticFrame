@@ -126,16 +126,19 @@ The default setup provides the following functionality:
 ```shell
 $grunt
 ```
+
 2. Report :: Generate JSHINT Report and open dev-jshint-report.html 
 
 ```shell
 $grunt report
 ```
+
 3. Build :: Uglification of Javascript, css minification, jshint error reporting for your dev environment 
 
 ```shell
 $grunt build
 ```
+
 4. Minification :: Uglification of Javascript and  CSS minification only
 ```shell
 $grunt dev-minify
