@@ -40,19 +40,29 @@ builds
 node_modules            : Contains node modules. Ignore this.
 public                  : All Javascript, CSS, images, content-images goes here
     |- css              : folder for generated CSS files
-        |- min          : Minified css to be kept here
+     |- min             : Minified css to be kept here
+     |- modules         : Module based CSS
+     |- themes          : The theme for the website has to be included here
+     - jshint-reporter.css : Default CSS file for JSHINT Report Generator (views/dev-jshint-report.html)
     |- js               : Javascript folder 
-        |- libs         : Put all third party javascripts here( un minified)
-        |- min          : Folder for minified js files
+     |- libs         : Put all third party javascripts here( un minified)
+     |- min          : Folder for minified js files
+     - ns.jshint-reporter.js : JS file for JSHINT Report Generator (views/dev-jshint-report.html)
     |- content-images   : Images that are expected to be author contributable
     |- images           : All images that are either used in CSS or part of development
     |- font             : Any custom font
 Resources               
     |- scss             : SASS/LESS files.
+        |- components   : contains default styling and customized components
+        |- global-partials : contains icons, CSS for constants and mixins
+        |- libs         : contains CSS provided by bootstrap and staticframe. Any other CSS libraries used can be placed here. 
+        |- modules      : CSS for different modules of the website. Sample Provided.
+        |- themes       : The theme for the website has to be included here
     |- sprite-source    : sprite psd files
 routes                  : Contains routing of pages. Edit it if required.
 views                   : Put your html templates here.
-    |- global-includes  : Contains html-header, footer, libary inclusion list.
+    |-components        : Contains markup for components of website.
+        |-global-components : Contains markup for global components of website.
 site-config.js          : Edit the site related global parameters
 config.rb               : SASS- compass configuration file
 package.json            : node modules configuration
@@ -111,18 +121,25 @@ A grunt file is provided with basic set of automation work. Modify it according 
 
 The default setup provides the following functionality:
 
-1. Uglification of Javascript, css minification, jshint error reporting for your dev environment
+1. Default Actions :: Start Server and watch for modifications 
 
 ```shell
-$grunt dev
+$grunt
 ```
-1. Uglification of Javascript, css minification, jshint error reporting, build creation for static assets.
+2. Report :: Generate JSHINT Report and open dev-jshint-report.html 
+
+```shell
+$grunt report
+```
+3. Build :: Uglification of Javascript, css minification, jshint error reporting for your dev environment 
 
 ```shell
 $grunt build
 ```
-
-
+4. Minification :: Uglification of Javascript and  CSS minification only
+```shell
+$grunt build
+```
 
 
 
