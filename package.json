@@ -10,22 +10,23 @@
     "method-override": "*",
     "errorhandler": "^1.1.1",
     "debug": "~2.0.0",
-    "ejs":"*"
+    "ejs": "*"
   },
-  "devDependencies" : {
-    "nodemon" : "*",
+  "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-cssmin": "~0.10.0",
-    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-accessibility": "*",
     "grunt-contrib-clean": "*",
+    "grunt-contrib-compass": "*",
     "grunt-contrib-copy": "*",
-     "grunt-contrib-jshint": "0.11.0",
     "grunt-contrib-csslint": "*",
-    "jshint-html-reporter":"*",
-    "grunt-open": "*",
-    "grunt-accessibility":"*",
-    "grunt-contrib-compass":"*",
+    "grunt-contrib-cssmin": "~0.10.0",
+    "grunt-contrib-jshint": "0.11.0",
+    "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "*",
-    "grunt-express-server": "*"
+    "grunt-express-server": "*",
+    "grunt-file-append": "0.0.6",
+    "grunt-open": "*",
+    "jshint-html-reporter": "*",
+    "nodemon": "*"
   }
 }

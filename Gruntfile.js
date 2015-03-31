@@ -128,8 +128,18 @@ module.exports = function(grunt) {
                     files:  ['app.js'],
                     tasks:  ['express:dev']
               }
+        },
+        file_append: {
+          default_options: {
+            files: [
+              {
+                append: "<link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'><script src='/js/ns.jshint-reporter.js'></script>",
+                input: 'node_modules/jshint-html-reporter/templates/bootstrap/body.html',
+                output: 'node_modules/jshint-html-reporter/templates/bootstrap/body.html'
+              }
+            ]
+          }
         }
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -143,7 +153,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
-
+    grunt.loadNpmTasks('grunt-file-append');
     /**
      *  grunt                       : start the server & watch scss
      *  grunt report                : creates js hint report
@@ -156,14 +166,11 @@ module.exports = function(grunt) {
      *  grunt watch-sass            : watches scss files - run this only when you start node sever with node command
      *  
      */
-
-    
     grunt.registerTask('default', ["express:dev", "watch"]);
-    grunt.registerTask("report", ["jshint:dev", "open:report"]);
+    grunt.registerTask("report", ["file_append", "jshint:dev", "open:report"]);
     grunt.registerTask("report-css", ["csslint"]);
-    grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build"]);
-    grunt.registerTask("dev-minify", ["uglify", "cssmin"]);
-   
+    grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build","file_append"]);
+    grunt.registerTask("dev-minify", ["uglify", "cssmin"]);   
     //OPTIONAL
     grunt.registerTask("dev-acc", ["accessibility"]);
     grunt.registerTask("watch-sass", ["watch:compass"])
