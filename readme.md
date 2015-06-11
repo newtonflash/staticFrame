@@ -13,8 +13,16 @@ This is a structural framework to get started with, which provide some best prac
 1. SASS - You need to have ruby and compass installed in your machine with global path setup
 
 ### Installation
-Unpack the code in your favorite location. Preferably in projects folder. If you have node and sass already installed, then in your command line goto the project directory and run 
-
+Unpack the code in your favorite location. Preferably in projects folder. If you have node and sass already installed, then in your command line goto the project directory and run :
+```shell
+npm install
+```
+```shell
+npm install -g grunt-cli
+```
+```shell
+gem install compass
+```
 ```shell
 grunt server
 ```
