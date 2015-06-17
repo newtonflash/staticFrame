@@ -167,6 +167,7 @@ module.exports = function(grunt) {
      *  
      */
     grunt.registerTask('default', ["express:dev", "open:dev", "watch"]);
+    grunt.registerTask('server', ["express:dev","open:dev", "watch"]);
     grunt.registerTask("report", ["file_append", "jshint:dev", "open:report"]);
     grunt.registerTask("report-css", ["csslint"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build","file_append"]);
