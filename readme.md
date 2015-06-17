@@ -26,7 +26,7 @@ gem install compass
 ```shell
 grunt server
 ```
-Now you can access your server in the browser with http://localhost:3100 . The default port no is set as 3100, which you can alter in your site-config file.
+Default grunt command will automatically open the browser and now you can access your server in the browser with http://localhost:3100 . The default port no is set as 3100, which you can alter in your site-config file.
 
 #### Node
 Download and install node in your system
