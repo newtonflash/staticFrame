@@ -166,7 +166,7 @@ module.exports = function(grunt) {
      *  grunt watch-sass            : watches scss files - run this only when you start node sever with node command
      *  
      */
-    grunt.registerTask('default', ["express:dev", "watch"]);
+    grunt.registerTask('default', ["express:dev", "open:dev", "watch"]);
     grunt.registerTask("report", ["file_append", "jshint:dev", "open:report"]);
     grunt.registerTask("report-css", ["csslint"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build","file_append"]);
