@@ -1,6 +1,5 @@
 /**
- *             global.js
- *   Global footer file
+ *   global.js
  *
  *   @project    < write project name here >
  *   @date       < put date here > 
