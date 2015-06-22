@@ -1,4 +1,4 @@
-var test = require("../views/services/test.json");
+
 
 
 module.exports = function (app, siteConfig, express){
@@ -28,7 +28,9 @@ module.exports = function (app, siteConfig, express){
 	});
 
 
-	app.post("/services/test.json", function(req, res){
+	app.post("/services/*", function(req, res){
+        var url = "../public/services/"+req.originalUrl.split("services/").join("");
+        var test = require(url);
         res.send(test);
     });
 
