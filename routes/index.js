@@ -22,4 +22,8 @@ module.exports = function (app, siteConfig, express){
 	  	}
 	  	res.render('404', siteConfig);
 	});
+
+	app.post('/services/test.json', function (req, res) {
+		res.send('POST request to the homepage');
+	});
 }

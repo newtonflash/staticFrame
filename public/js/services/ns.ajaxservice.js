@@ -28,10 +28,11 @@
                 error:{},
                 mime:"application/json",
                 preLoader:false,
-                preLoaderTarget:null
-
+                preLoaderTarget:null,
+                allowMultiple:false,
+                loadTarget:""
             },
-            defaultPostOptions = $.extend(true, defaults , {
+            defaultPostOptions = $.extend(true,{} ,defaults , {
                 type:"POST"
             });
 
@@ -40,7 +41,7 @@
             var serviceURL = options.url,
                 ajaxParams,
                 successCallback= options.success,
-                errorCallBack = option.error;
+                errorCallBack = options.error;
 
             if(serviceURL && serviceURL !== ""){
                 //abort the service if called multiple times before one service cycle ends
@@ -55,24 +56,24 @@
                     type: options.type,
                     mimeType: options.mime,
                     status:{
-                        404: function{
+                        404: function(){
                             //track down what needs to be done
                         },
-                        302: function{
+                        302: function(){
                             // this is good for what?
                         }
                     },
                     beforeSend: function (jqXHR, settings) {
-                        if (options.preloader === true && $(options.preloaderTarget)[0]) {
+                        if (options.preLoader === true && $(options.preLoaderTarget)[0]) {
                             $(options.preloaderTarget).addClass("loading");
                         }
-                        if (typeof option.beforeSend === "function") {
-                            option.beforeSend(jqXHR, settings);
+                        if (typeof options.beforeSend === "function") {
+                            options.beforeSend(jqXHR, settings);
                         }
                     },
                     success: function (response, textStatus, jqXHR) {
 
-                        ns.ajaxRequests[serviceName] = requestQueue[serviceName] = false;
+                        requestQueue[serviceName] = false;
 
                         var requestHeaders = jqXHR.getResponseHeader('asx-redirect-url');
 
@@ -89,7 +90,7 @@
 
                         }
                         //Show generic error message if response has "HTML or BODY" tag in response Object
-                         if( argsObj.format === 'html' && response.indexOf('<body') !== -1 && response.indexOf('<html') !== -1) {
+                         if( options.format === 'html' && response.indexOf('<body') !== -1 && response.indexOf('<html') !== -1) {
                             if(options.execDefaultErrorHandler === true  || typeof errorCallBack === "function") {
                                 genericErrorHandler(errorCallBack, options);
                             }
@@ -102,13 +103,13 @@
                             closePreloader(options);
 
                             //Show genric error message if response status is GENERIC_ERROR
-                            if(ML.utils.hasProperty(response, "status") && typeof response.status === 'string' && response.status.toUpperCase() == "GENERIC_ERROR"){
-                                if (argsObj.execDefaultErrorHandler === true || typeof errorCB === "function"){
+                            if(hasProperty(response, "status") && typeof response.status === 'string' && response.status.toUpperCase() == "GENERIC_ERROR"){
+                                if (options.execDefaultErrorHandler === true || typeof errorCB === "function"){
                                     genericErrorHandler(errorCB, options);
                                 }
                             }
 
-                            if(options.loadTarget !== "" && argsObj.loadTarget[0]){
+                            if(options.loadTarget !== "" && options.loadTarget[0]){
                                 options.loadTarget.append(response);
                             }
 
@@ -123,26 +124,31 @@
                         }
                     },
                     error: function (xhr, status, error) {
-                        ns.ajaxRequests[serviceName] = requestQueue[serviceName] = false;
+                        requestQueue[serviceName] = false;
 
                         if (options.defaultErrorHandler === true  || typeof errorCallBack === "function") {
                             genericErrorHandler(errorCallBack, options, error);
                         }
                     },
                     timeout: options.timeout
-                }
+                };
 
 
-                ns.ajaxRequests[serviceName] = requestQueue[serviceName] =  $.ajax(ajaxParams);
+                requestQueue[serviceName] =  $.ajax(ajaxParams);
+
 
             } else{
                 console.log("Service URL missing in parameters.")
             }
-        }
+        };
+
+        var hasProperty = function(obj, key) {
+            return Object.prototype.hasOwnProperty.call(obj, key);
+        };
 
         var closePreloader = function(options){
-            var $preloaderTarget = $(options.preloaderTarget);
-            if (options.preloader === true && $preloaderTarget[0]) {
+            var $preloaderTarget = $(options.preLoaderTarget);
+            if (options.preLoader === true && $preLoaderTarget[0]) {
                 $preloaderTarget.removeClass("loading");
             }
         };
@@ -165,11 +171,14 @@
             options = $.extend(true, {}, defaults, options);
 
             ajax(serviceName, options);
+
+            return serviceName;
         };
 
         /**
          * Post a form, with data params
          * Service names are mandatory - this would make sure no duplicate call are made.
+         * @param serviceName
          * @param options
          */
         self.post = function (serviceName, options) {
@@ -186,6 +195,8 @@
             options = $.extend(true, {}, defaultPostOptions, options);
 
             ajax(serviceName, options);
+
+            return serviceName;
         }
     };
 

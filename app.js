@@ -14,6 +14,7 @@ app.use('/images',express.static(path.join(__dirname, 'public/images')));
 app.use('/js',express.static(path.join(__dirname, 'public/js')));
 app.use('/css',express.static(path.join(__dirname, 'public/css')));
 
+
 app.engine('.html', require('ejs').__express);
 app.set('view engine', siteConfig.templateEngine);
 
