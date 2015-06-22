@@ -9,7 +9,7 @@
 <% include /components/global-components/content-footer.ejs %>
 <% include /components/global-components/footer-library.ejs %>
 <script>
-    NameSpace.ajaxService.get("test", {
+    NameSpace.ajaxService.get("get request", {
         url:"http://localhost:3100/services/test.json",
         success:function(data){
             console.log(data);
@@ -19,7 +19,7 @@
     NameSpace.ajaxService.post("tests", {
         url:"http://localhost:3100/services/test.json",
         success:function(data){
-            console.log(data);
+            console.log("==================", data);
         },
         data:{
             "b":"c"

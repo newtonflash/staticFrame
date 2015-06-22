@@ -1,4 +1,8 @@
+var test = require("../views/services/test.json");
+
+
 module.exports = function (app, siteConfig, express){
+
 	app.use("/*.html", function(req, res){
 		var fullUrl = req.originalUrl.substring(1,req.originalUrl.length).split(".html").join("");
 		if(fullUrl !== "/"){
@@ -23,7 +27,10 @@ module.exports = function (app, siteConfig, express){
 	  	res.render('404', siteConfig);
 	});
 
-	app.post('/services/test.json', function (req, res) {
-		res.send('POST request to the homepage');
-	});
-}
+
+	app.post("/services/test.json", function(req, res){
+        res.send(test);
+    });
+
+};
+

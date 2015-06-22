@@ -65,7 +65,7 @@
                     },
                     beforeSend: function (jqXHR, settings) {
                         if (options.preLoader === true && $(options.preLoaderTarget)[0]) {
-                            $(options.preloaderTarget).addClass("loading");
+                            $(options.preLoaderTarget).addClass("loading");
                         }
                         if (typeof options.beforeSend === "function") {
                             options.beforeSend(jqXHR, settings);
@@ -127,8 +127,9 @@
                         requestQueue[serviceName] = false;
 
                         if (options.defaultErrorHandler === true  || typeof errorCallBack === "function") {
-                            genericErrorHandler(errorCallBack, options, error);
+                            genericErrorHandler(errorCallBack, options, error, serviceName);
                         }
+
                     },
                     timeout: options.timeout
                 };
@@ -147,18 +148,17 @@
         };
 
         var closePreloader = function(options){
-            var $preloaderTarget = $(options.preLoaderTarget);
+            var $preLoaderTarget = $(options.preLoaderTarget);
             if (options.preLoader === true && $preLoaderTarget[0]) {
-                $preloaderTarget.removeClass("loading");
+                $preLoaderTarget.removeClass("loading");
             }
         };
 
-        var genericErrorHandler = function (callback, options, error) {
+        var genericErrorHandler = function (callback, options, error, serviceName) {
             if(typeof callback == "function"){
                 callback(error, options);
             } else {
-                // code to be written for showing generic errors
-                // you can show either by any modal, or notification
+               console.error("Ajax call " +serviceName +  " failed because of response contains :"+  error);
             }
         };
 

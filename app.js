@@ -20,6 +20,7 @@ app.set('view engine', siteConfig.templateEngine);
 
 require("./routes")(app, siteConfig, express);
 
+
 var server = app.listen(siteConfig.portNo, function () {
 
   var host = server.address().address
