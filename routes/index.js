@@ -1,6 +1,4 @@
 
-
-
 module.exports = function (app, siteConfig, express){
 
 	app.use("/*.html", function(req, res){
@@ -31,7 +29,16 @@ module.exports = function (app, siteConfig, express){
 	app.post("/services/*", function(req, res){
         var url = "../public/services/"+req.originalUrl.split("services/").join("");
         var test = require(url);
+
         res.send(test);
+
+		/*var k = {
+			"status":true
+		}
+		if(req.body.b=="c"){
+			res.send(k);
+		}
+		res.send(req.body.b);*/
     });
 
 };

@@ -175,6 +175,4 @@ module.exports = function(grunt) {
     //OPTIONAL
     grunt.registerTask("dev-acc", ["accessibility"]);
     grunt.registerTask("watch-sass", ["watch:compass"])
-    
-
 };
