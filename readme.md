@@ -37,7 +37,7 @@ For SASS you need to install ruby. For the current setup we recomend using 1.9.1
 and for compiling SASS we are using compass which can be installed with the following command
 
 ```shell
-gems install compass
+gem install compass
 ```
 
 Folder structure:
@@ -80,20 +80,19 @@ app.js                  : Node root file to start the server.
 ```
 
 ##	Library/Technology used
-1. CSS grid framework               : Bootstrap 3.3.3
-2. CSS preporocessor				: SCSS
-3. SCSS watcher						: Compass
-4. JS DOM manupulation				: jQuery
-5. JS form validation				: jQuery validator
-
+1. CSS grid framework           	: Bootstrap 3.3.3
+2. CSS preporocessor			: SCSS
+3. SCSS watcher				: Compass
+4. JS DOM manupulation			: jQuery
+5. JS form validation			: jQuery validator
 
 ##	Helpful commands
 
 1. To install new node module		: npm install
-2. Run grunt task					: grunt
-3. compile scss files				: compass watch
+2. Run grunt task			: grunt
+3. compile scss files			: compass watch
 4. run the application server		: node app
-5. validate user credentials        : sudo chown -R $(whoami) ~/.npm
+5. validate user credentials    	: sudo chown -R $(whoami) ~/.npm
 
 
 ##Guidelines
@@ -133,6 +132,11 @@ The default setup provides the following functionality:
 Default Actions :: Start Server and watch for modifications 
 ```shell
 $grunt
+```
+
+Start Server, watch for modifications and open localhost in default browser
+```shell
+$grunt server
 ```
 
 Report :: Generate JSHINT Report and open dev-jshint-report.html 
