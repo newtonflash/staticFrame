@@ -10,7 +10,8 @@ This is a structural framework to get started with, which provide some best prac
 3. Based on modular approach for javascript
 
 ### Dependencies
-1. SASS - You need to have ruby and compass installed in your machine with global path setup
+1. SASS - You need to have ruby and compass installed in your machine with global path setup.
+2. Use Ruby 1.9 for avoiding glitches in using compass.
 
 ### Installation
 Unpack the code in your favorite location. Preferably in projects folder. If you have node and sass already installed, then in your command line goto the project directory and run :
