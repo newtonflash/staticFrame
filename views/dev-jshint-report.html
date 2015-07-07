@@ -2,47 +2,33 @@
 <html lang="en">
 <head>
     <title>JSHint Report</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container-fluid">
 
-    <div class="index">
-        <ul>  
-        </ul>
-    </div>
-    <div class="results">
-    <h2> </h2>
-        <table class="table table-hover">
-            <tr>
-                <th class="text-center">Code</th>
-                <th class="text-center">Line</th>
-                <th class="text-center">Column</th>
-                <th>Evidence</th>
-                <th>Reason</th>
-            </tr>
-            <tr class="file-name"><td colspan="5"><b>..\public\js\ns.global.js</b></td></tr>
-<tr class="warning">
-    <td class="text-center">W055</td>
-    <td class="text-center">41</td>
-    <td class="text-center">21</td>
-    <td><code>	ns.global &#61; new _global&#40;&#41;;</code></td>
-    <td>A constructor name should start with an uppercase letter.</td>
-</tr><tr class="file-name"><td colspan="5"><b>..\public\js\ns.jshint-reporter.js</b></td></tr>
-<tr class="warning">
+<div class="container-fluid">
+    <table class="table table-hover">
+        <tr>
+            <th class="text-center">Code</th>
+            <th class="text-center">Line</th>
+            <th class="text-center">Column</th>
+            <th>Evidence</th>
+            <th>Reason</th>
+        </tr>
+        <tr><td colspan="5"><b>..\public\js\ns.jshint-reporter.js</b></td></tr><tr class="warning">
     <td class="text-center">W033</td>
-    <td class="text-center">28</td>
-    <td class="text-center">11</td>
-    <td><code>        &#125;&#41;</code></td>
+    <td class="text-center">14</td>
+    <td class="text-center">99</td>
+    <td><code>        &#36;&#40;&quot;select.file-list&quot;&#41;.append&#40;&quot;&lt;option class&#61;&#39;file-name &quot;&#43;i&#43;&quot;&#39;&gt;&quot;&#43; fileList&#91;i&#93; &#43;&quot;&lt;/option&gt;&quot;&#41;</code></td>
     <td>Missing semicolon.</td>
 </tr><tr class="warning">
     <td class="text-center">W033</td>
-    <td class="text-center">29</td>
+    <td class="text-center">27</td>
     <td class="text-center">2</td>
     <td><code>&#125;</code></td>
     <td>Missing semicolon.</td>
-</tr><tr class="file-name"><td colspan="5"><b>..\public\js\ns.preinit.js</b></td></tr>
-<tr class="warning">
+</tr><tr><td colspan="5"><b>..\public\js\ns.preinit.js</b></td></tr><tr class="warning">
     <td class="text-center">W014</td>
     <td class="text-center">24</td>
     <td class="text-center">43</td>
@@ -258,24 +244,13 @@
     <td class="text-center">153</td>
     <td><code>Array.move||&#40;Array.prototype.move&#61;function&#40;b&#44;a&#41;&#123;if&#40;a&gt;&#61;this.length&#41;for&#40;var c&#61;a-this.length;c--&#43;1;&#41;this.push&#40;void 0&#41;;this.splice&#40;a&#44;0&#44;this.splice&#40;b&#44;1&#41;&#91;0&#93;&#41;&#125;&#41;;</code></td>
     <td>Expected an assignment or function call and instead saw an expression.</td>
-</tr><tr class="file-name"><td colspan="5"><b>..\public\js\ns.utils.js</b></td></tr>
-<tr class="warning">
-    <td class="text-center">W033</td>
-    <td class="text-center">8</td>
-    <td class="text-center">7</td>
-    <td><code> 	&#125;</code></td>
-    <td>Missing semicolon.</td>
-</tr><tr class="warning">
-    <td class="text-center">W033</td>
-    <td class="text-center">9</td>
-    <td class="text-center">3</td>
-    <td><code> &#125;</code></td>
-    <td>Missing semicolon.</td>
 </tr>
-        </table>
-    </div>
+    </table>
+    <div class="well">
+    Found <span class="label label-default">38</span> failures - <span class="label label-danger">0 errors</span> &amp; <span class="label label-warning">38 warnings</span>
 </div>
+</div>
+
 </body>
-<script src="/js/libs/jquery-1.11.2.js"></script>
 </html>
-<link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'><script src='/js/ns.jshint-reporter.js'></script>
+<link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'><script src='/js/ns.jshint-reporter.js'></script><script src='https://code.jquery.com/jquery-1.11.3.js'></script><script src='/js/ns.jshint-reporter.js'></script><link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'>

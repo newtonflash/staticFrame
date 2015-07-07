@@ -1,4 +1,9 @@
+var siteConfig = require('./site-config.js'),
+config = function(){
+  return siteConfig;
+}
 module.exports = function(grunt) {
+    var siteConf = config();
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         meta: {            
@@ -92,10 +97,10 @@ module.exports = function(grunt) {
         },
         open:{
               dev : {
-                  path: 'http://localhost:3100/'
+                  path: 'http://localhost:'+siteConf.portNo+'/'
               },
               report:{
-                  path: 'http://localhost:3100/dev-jshint-report.html' 
+                  path: 'http://localhost:'+siteConf.portNo+'/dev-jshint-report.html' 
               }
         },
         compass: {
@@ -133,9 +138,9 @@ module.exports = function(grunt) {
           default_options: {
             files: [
               {
-                append: "<link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'><script src='/js/ns.jshint-reporter.js'></script>",
-                input: 'node_modules/jshint-html-reporter/templates/bootstrap/body.html',
-                output: 'node_modules/jshint-html-reporter/templates/bootstrap/body.html'
+                append: "<script src='https://code.jquery.com/jquery-1.11.3.js'></script><script src='/js/ns.jshint-reporter.js'></script><link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'>",
+                input: 'views/dev-jshint-report.html',
+                output:'views/dev-jshint-report.html'
               }
             ]
           }
@@ -168,11 +173,11 @@ module.exports = function(grunt) {
      */
     grunt.registerTask('default', ["express:dev",  "watch"]);
     grunt.registerTask('server', ["express:dev","open:dev", "watch"]);
-    grunt.registerTask("report", ["file_append", "jshint:dev", "open:report"]);
-    grunt.registerTask("report-css", ["csslint"]);
+    grunt.registerTask("report", ["jshint:dev", "file_append","open:report", "server"]);
     grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build","file_append"]);
-    grunt.registerTask("dev-minify", ["uglify", "cssmin"]);   
-    //OPTIONAL
-    grunt.registerTask("dev-acc", ["accessibility"]);
+    //OPTIONAL  - Work in Progress
+    /*grunt.registerTask("dev-acc", ["accessibility"]);
     grunt.registerTask("watch-sass", ["watch:compass"])
+    grunt.registerTask("dev-minify", ["uglify", "cssmin"]); 
+    grunt.registerTask("report-css", ["csslint"]);*/
 };

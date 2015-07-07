@@ -2,28 +2,26 @@
  *	Put all utiilities here
  */
 window.onload = function(){
-        var list  = document.getElementsByClassName('file-name');
-        console.log(list);
-        var filelist = document.getElementsByTagName('ul')[0];
-        console.log(filelist);
-        for (i=0;i<list.length;i++){
-            console.log(list[i].outerText);
-            var listitem = document.createElement("li");
-            var textitem = document.createTextNode(list[i].textContent.split("\\").pop());
-            listitem.appendChild(textitem);
-            filelist.appendChild(listitem);
-            listitem.setAttribute("class",i);
-        }
+    var $list  = $('td[colspan=5]'),
+        fileList = [], i=0, $row=$('tr');
+    for(i=0;i<$list.length;i++){
+        fileList.push($list[i].textContent.split("\\").pop());
+        $list.eq(i).parent().addClass("file-names");
+    }
+    $("select.file-list").remove();
+    $(".container-fluid").prepend("<h1>Select the file name to view report</h1><select class='file-list'></select>");
+    for(i=0;i<fileList.length;i++){
+        $("select.file-list").append("<option class='file-name "+i+"'>"+ fileList[i] +"</option>")
+    }
+    $row.hide();
+    $row.eq(0).show();$row.eq(1).show();
+    var $fileNames = $(".file-names");
+    $fileNames.eq(0).nextUntil(".file-names").show();
+    $(".file-list").on("change",function(){
+        var index = event.srcElement.selectedIndex;
         $("tr").hide();
-        $("tr").eq(0).show();
-        $(".file-name").eq(0).nextUntil( ".file-name" ).show();
-        $(".results h2").eq(0).html("File Name Selected :: "+list[0].textContent.split("\\").pop());
-        
-        $("li").on("click", function(event){
-            $(".results h2").eq(0).html("File Name Selected :: "+event.target.textContent.split("\\").pop());
-            var index = parseInt(event.target.getAttribute("class"));
-            $("tr").hide();
-            $("tr").eq(0).show();
-            $(".file-name").eq(index).nextUntil( ".file-name" ).show(); 
-        })
+        $row.eq(0).show();
+        $fileNames.eq(index).show();
+        $fileNames.eq(index).nextUntil(".file-names").show();
+    });
 }
