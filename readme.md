@@ -19,9 +19,6 @@ Unpack the code in your favorite location. Preferably in projects folder. If you
 npm install
 ```
 ```shell
-npm install -g grunt-cli
-```
-```shell
 gem install compass
 ```
 ```shell
