@@ -1,5 +1,5 @@
 /** Global configuration file , which includes environment configurations, global functions
- *  @author: pradyumna
+ * 
  *	@dependency jquery.js
  **/
 
