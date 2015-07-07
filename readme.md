@@ -57,6 +57,7 @@ public                  : All Javascript, CSS, images, content-images goes here
     |- content-images   : Images that are expected to be author contributable
     |- images           : All images that are either used in CSS or part of development
     |- font             : Any custom font
+    |- services         : Put all json/xml/html files requested by ajax calls.
 Resources               
     |- scss             : SASS/LESS files.
         |- components   : contains default styling and customized components

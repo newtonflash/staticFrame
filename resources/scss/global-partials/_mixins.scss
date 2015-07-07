@@ -1,0 +1,119 @@
+// creates a basic font declaration
+ 
+@mixin font($size, $height){
+  font-size: $size;
+  line-height: $height;
+}
+
+// apply transform for all browsers
+// example: @include transform( rotate(-180deg) )
+@mixin transform($params) {
+  @include css3-prefix('transform', $params);
+}
+
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+// standard prefixes
+@function prefix($property, $prefixes: (webkit moz o ms)) {
+    $vendor-prefixed-properties: transform background-clip background-size;
+    $result: ();
+    @each $prefix in $prefixes {
+       @if index($vendor-prefixed-properties, $property) {
+         $property: -#{$prefix}-#{$property}
+       }
+       $result: append($result, $property);
+    }
+    @return $result;
+}
+ 
+@function trans-prefix($transition, $prefix: moz) {
+    $prefixed: ();
+    @each $trans in $transition {
+        $prop-name: nth($trans, 1);
+        $vendor-prop-name: prefix($prop-name, $prefix);
+        $prop-vals: nth($trans, 2);
+        $prefixed: append($prefixed, ($vendor-prop-name $prop-vals), comma);
+    }
+    
+    @return $prefixed;
+}
+ 
+
+
+// develops multibrowser transition code 
+// example: @include transition(transform 0.2s ease-in 0.2s, opacity 0.2s ease);
+@mixin transition($values...) { 
+    $transitions: ();
+    @each $declaration in $values {
+        $prop: nth($declaration, 1);
+        $prop-opts: ();
+        $length: length($declaration);
+        @for $i from 2 through $length {
+            $prop-opts: append($prop-opts, nth($declaration, $i));   
+        }
+        $trans: ($prop, $prop-opts);
+        $transitions: append($transitions, $trans, comma);
+    }
+      
+    -webkit-transition: trans-prefix($transitions, webkit);
+    -moz-transition: trans-prefix($transitions, moz);
+    -o-transition: trans-prefix($transitions, o);
+    transition: $values;
+}
+
+
+
+
+
+/**
+ *  media queries
+ */
+
+@mixin mediaDesktop {
+  @media screen and (min-width:1025px) {
+    @content;
+  }
+}
+
+@mixin mediaTablet {
+  @media screen and (min-width:768px) {
+    @content;
+  }
+}
+
+@mixin mediaTabletOnly {
+  @media screen and (min-width:768px) and (max-width:1024px) {
+    @content;
+  }
+}
+
+@mixin mediaMobileOnly {
+  @media screen and (max-width:767px) {
+    @content;
+  }
+}
+
+@mixin mediaMobilePortraitOnly {
+  @media screen and (max-width:480px) {
+    @content;
+  }
+}
+
+@mixin mediaMobileLandscapeOnly {
+  @media screen and (min-width:481px) and (max-width:767px) {
+    @content;
+  }
+}
+
+
+@mixin mediaMobileAndTabletOnly {
+  @media screen and (max-width:1024px) {
+    @content;
+  }
+}
+

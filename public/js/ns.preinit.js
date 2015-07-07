@@ -17,7 +17,7 @@ NameSpace.events = NameSpace.events || {};
 		ns.cfg = ns.cfg || {};
 		ns.cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
 		ns.cfg.isAndroid = /Android/i.test(ua);
-		ns.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua);
+		ns.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua)  || /Trident\/7\./.test(ua);
 		ns.cfg.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(ua);
 		ns.cfg.isTouchEnabled = (function is_touch_device() {
 									 return (('ontouchstart' in window)
@@ -28,34 +28,33 @@ NameSpace.events = NameSpace.events || {};
 		!ns.cfg.isMobile &&	html.classList.add("no-touch");
 		
 		ns.cfg.breakPoints ={
-			XS    :"screen and (min-width:0px) and (max-width:480px)",
-			SX   :"screen and (min-width:481px) and (max-width:767px)",
-			SM    :"screen and (min-width:768px) and (max-width:1024px)",
-			MD    :"screen and (min-width:1025px) and (max-width:1280px)",
-			LG    :"screen and (min-width:1281px)",
-			XS_SX:"screen and (min-width:0px) and (max-width:767px)",
-			XS_SM :"screen and (min-width:0px) and (max-width:1024px)",
-			SM_MD :"screen and (min-width:768px)",
-			MD_LG :"screen and (min-width:1025px)"
+            MOBILE_ONLY             :"screen and (min-width:0px) and (max-width:767px)",
+			MOBILE_PORTRAIT_ONLY    :"screen and (min-width:0px) and (max-width:480px)",
+			MOBILE_LANDSCAPE_ONLY   :"screen and (min-width:481px) and (max-width:767px)",
+            MOBILE_TABLET_ONLY      :"screen and (min-width:0px) and (max-width:1024px)",
+			TABLET_ONLY             :"screen and (min-width:768px) and (max-width:1024px)",
+			DESKTOP_ONLY            :"screen and (min-width:1025px) and (max-width:1280px)",
+			DESKTOP_CINEMA          :"screen and (min-width:1025px)",
+            CINEMA                  :"screen and (min-width:1281px)",
 		}
 
 		ns.events = {
-			WINDOW_RESIZE : "ml/screen/resize/",
-			WINDOW_LOAD : "ml/window/load/",
-			SCROLL : "ml/mouse/scroll",
-			VIEWPORT_CHANGE : "ml/viewport/change", //for responsive implementation
-			INIT_MODULES : "ml/modules/init",
-			VIEWPORT_XS:"viewport/extrasmall",
-			VIEWPORT_SX:"viewport/smallExtended",
-			VIEWPORT_SM:"viewport/small",
-			VIEWPORT_MD:"viewport/medium",
-			VIEWPORT_LG:"viewport/large",
-			VIEWPORT_XS_SX:"viewport/mobile",
-			VIEWPORT_XS_SM:"viewport/mobileAndTablet",
-			VIEWPORT_SM_MD:"viewport/tabletAndAbove",
-			VIEWPORT_MD_LG:"viewport/desktopAndAbove"
+			WINDOW_RESIZE : "asx/screen/resize/",
+			WINDOW_LOAD : "asx/window/load/",
+			SCROLL : "asx/mouse/scroll",
+			INIT_MODULES : "asx/modules/init/",
+
+            VIEWPORT_CHANGE : "asx/viewport/change/", //for responsive implementation
+            VIEWPORT_MOBILE_ONLY:"viewport/mobileonly/",
+			VIEWPORT_MOBILE_PORTRAIT_ONLY:"viewport/mobileportrait/",
+			VIEWPORT_MOBILE_LANDSCAPE_ONLY:"viewport/mobilelandscape/",
+            VIEWPORT_MOBILE_TABLET_ONLY:"viewport/mobileAndTablet/",
+			VIEWPORT_TABLET_ONLY:"viewport/tablet only/",
+            VIEWPORT_DESKTOP_ONLY:"viewport/desktop only/",
+			VIEWPORT_DESKTOP_CINEMA:"viewport/desktopAndAbove/",
+            VIEWPORT_CINEMA :"viewport/large cinema display/"
 		}
-		ns.cfg.viewport = ns.events.VIEWPORT_LG;
+		ns.cfg.viewport = ns.events.VIEWPORT_CINEMA;
 
 	})();
 
@@ -66,8 +65,18 @@ NameSpace.events = NameSpace.events || {};
 	 **/
 	$(document).ready(function(){
 
+		/** Global functionality that needs to be placed before anything happens on the page.
+	 *  1. Resize event binding, and publishing
+	 *  2. Scroll binding based on IE or other browser
+	 *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
+	 **/
+	$(document).ready(function(){
+        var uniqueBreakPointRegex = /\bMOBILE_PORTRAIT_ONLY\b|\bTABLET_ONLY\b|\bCINEMA\b|\bMOBILE_LANDSCAPE_ONLY\b|\bDESKTOP_ONLY\b/;
+
+		ns.root = $('body'); // this is for caching body for faster search inside it.
+
 		// avoid subscribing to WINDOW_RESIZE event where ever possible
-		$(window).resize( $.throttle( 250, function(){
+		$(window).resize($.throttle( 250, function(){
 			$.publish(ns.events.WINDOW_RESIZE);
 		}));
 
@@ -85,7 +94,7 @@ NameSpace.events = NameSpace.events || {};
 			;(function(breakName, mediaQuery){
 				var handler = function(data){
 					if(data.matches){
-						if(/\bSM\b|\bMD\b|\bLG\b|\bSMX\b|\bXS\b/.test(breakName)) {
+						if(uniqueBreakPointRegex.test(breakName)) {
 							ns.cfg.viewport = breakName;
 						}
 					}
@@ -106,7 +115,7 @@ NameSpace.events = NameSpace.events || {};
 						var vpAlias = "VIEWPORT_"+breakName;
 						$.publish(ns.events[vpAlias], true);
 
-						if(/\bSM\b|\bMD\b|\bLG\b|\bSMX\b|\bXS\b/.test(breakName)) {
+						if(uniqueBreakPointRegex.test(breakName)) {
 							ns.cfg.viewport = breakName;
 							$.publish(ns.events.VIEWPORT_CHANGE);
 						}
