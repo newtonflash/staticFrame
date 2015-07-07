@@ -75,7 +75,7 @@
 
                         requestQueue[serviceName] = false;
 
-                        var requestHeaders = jqXHR.getResponseHeader('asx-redirect-url');
+                        var requestHeaders = jqXHR.getResponseHeader('redirect-url');
 
                         if (requestHeaders !== null && requestHeaders !== '') {
                             window.location.href = requestHeaders;
