@@ -24,7 +24,7 @@ gem install compass
 ```shell
 grunt server
 ```
-Default grunt command will automatically open the browser and now you can access your server in the browser with http://localhost:3100 . The default port no is set as 3100, which you can alter in your site-config file.
+Default grunt command will automatically open the browser and now you can access your server files in the browser with http://localhost:3100 . The default port no is set as 3100, which you can modify in your site-config file.
 
 #### Node
 Download and install node in your system
@@ -101,7 +101,7 @@ Change namespace names for your project in all js files. Currently it's read as 
 
 ##### Beter coding practices
 1. Try to use "use strict" in your modules where ever possible.
-2. Use jshint to validate your code. You can use the plugins in your notepad++ or sublime editors
+2. Use jshint to validate your code. You can use the plugins in your Notepad++ or Sublime or Webstorm or Brackets editors
 
 
 #### Implementation of publish - subscribe pattern
