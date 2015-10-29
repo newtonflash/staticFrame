@@ -3,12 +3,12 @@
  *	@dependency jquery.js
  **/
 
-var NameSpace = NameSpace || {};
+var SF = SF || {};
 
-NameSpace.cfg = NameSpace.cfg || {};
-NameSpace.events = NameSpace.events || {};
+SF.cfg = SF.cfg || {};
+SF.events = SF.events || {};
 
-;(function ($, ns, window, document, undefined){
+(function ($, ns, window, document, undefined){
 	(function(){
 		var ua = navigator.userAgent,
 			isDevEnv = (location.host.indexOf("localhost") !== -1)? 1 : -1 ,
@@ -35,7 +35,7 @@ NameSpace.events = NameSpace.events || {};
 			TABLET_ONLY             :"screen and (min-width:768px) and (max-width:1024px)",
 			DESKTOP_ONLY            :"screen and (min-width:1025px) and (max-width:1280px)",
 			DESKTOP_CINEMA          :"screen and (min-width:1025px)",
-            CINEMA                  :"screen and (min-width:1281px)",
+            CINEMA                  :"screen and (min-width:1281px)"
 		}
 
 		ns.events = {
@@ -64,13 +64,6 @@ NameSpace.events = NameSpace.events || {};
 	 *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
 	 **/
 	$(document).ready(function(){
-
-		/** Global functionality that needs to be placed before anything happens on the page.
-	 *  1. Resize event binding, and publishing
-	 *  2. Scroll binding based on IE or other browser
-	 *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
-	 **/
-	$(document).ready(function(){
         var uniqueBreakPointRegex = /\bMOBILE_PORTRAIT_ONLY\b|\bTABLET_ONLY\b|\bCINEMA\b|\bMOBILE_LANDSCAPE_ONLY\b|\bDESKTOP_ONLY\b/;
 
 		ns.root = $('body'); // this is for caching body for faster search inside it.
@@ -90,21 +83,15 @@ NameSpace.events = NameSpace.events || {};
 			}));
 		}
 		// for first time before module initialization
-		for ( var breakPoint in  ns.cfg.breakPoints){
-			;(function(breakName, mediaQuery){
-				var handler = function(data){
-					if(data.matches){
-						if(uniqueBreakPointRegex.test(breakName)) {
-							ns.cfg.viewport = breakName;
-						}
-					}
+		for (breakPoint in ns.cfg.breakPoints) {
+			mediaQuery = ns.cfg.breakPoints[breakPoint];
+			if (matchMedia(mediaQuery).matches) {
+				if (uniqueBreakPointRegex.test(breakPoint)) {
+					ns.cfg.viewport = breakPoint;
 				}
-				handler({
-					media: mediaQuery,
-					matches: matchMedia(mediaQuery).matches
-				});
-			})(breakPoint, ns.cfg.breakPoints[breakPoint]);
-		};
+			}
+		}
+
 		$.publish(ns.events.INIT_MODULES);
 
 		// publish events on viewport change based on media queries, after document ready
@@ -122,7 +109,7 @@ NameSpace.events = NameSpace.events || {};
 					} else {
 						$.publish(ns.events["VIEWPORT_"+breakName], false);
 					}
-				}
+				};
 				handler({
 					media: mediaQuery,
 					matches: matchMedia(mediaQuery).matches
@@ -136,7 +123,7 @@ NameSpace.events = NameSpace.events || {};
 	$(window).load(function(){
 		$.publish(ns.events.WINDOW_LOAD);
 	});
-})(jQuery, NameSpace, this, this.document);
+})(jQuery, SF, this, this.document);
 
 
 /** ============================================================================

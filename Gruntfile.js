@@ -24,12 +24,12 @@ module.exports = function(grunt) {
                 '<%= meta.minJSDir %>/ns.libs.min.js': 
                       [
                         '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js', 
-                        '<%= meta.srcJSDir %>/ns.preinit.js'
+                        '<%= meta.srcJSDir %>/sf.preinit.js'
                       ],
                 '<%= meta.minJSDir %>/ns.custom.min.js': 
                       [
                         '<%= meta.srcJSDir %>/libs/jquery.validate.js',                    
-                        '<%= meta.srcJSDir %>/ns.global.js'
+                        '<%= meta.srcJSDir %>/sf.global.js'
                       ]
             }
           }
@@ -159,25 +159,42 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-file-append');
+
     /**
-     *  grunt                       : start the server & watch scss
-     *  grunt report                : creates js hint report
-     *  grunt report-css            : creates CSSlint report
-     *  grunt build                 : it uglifies, minifies, cleans build directory and creates a new build file.
-     *  grunt dev-minify            : minifies and uglifies css and js files.
-     *
-     *  OPTIONAL
-     * --------------------------------------------------------
-     *  grunt watch-sass            : watches scss files - run this only when you start node sever with node command
-     *  
+     * Start grunt server
      */
     grunt.registerTask('default', ["express:dev",  "watch"]);
-    grunt.registerTask('server', ["express:dev","open:dev", "watch"]);
-    grunt.registerTask("report", ["jshint:dev", "file_append","open:report", "server"]);
-    grunt.registerTask('build', ["uglify", "cssmin", "clean", "copy", "jshint:build","file_append"]);
-    //OPTIONAL  - Work in Progress
-    /*grunt.registerTask("dev-acc", ["accessibility"]);
-    grunt.registerTask("watch-sass", ["watch:compass"])
-    grunt.registerTask("dev-minify", ["uglify", "cssmin"]); 
-    grunt.registerTask("report-css", ["csslint"]);*/
+
+    /**
+     * start grunt server and open index page in the default browser
+     */
+    grunt.registerTask('open', ["express:dev","watch", "open:dev"]);
+
+    /**
+     * Open jshint report in browser
+     */
+    grunt.registerTask("report-js", ["jshint:dev", "file_append","open:report-js"]);
+
+    /**
+     * Open CSSlint report in browser
+     */
+    grunt.registerTask("report-css", ["jshint:dev", "file_append","open:report-css"]);
+
+    /**
+     * Open HTML & accessibility issues in browser
+     */
+    grunt.registerTask("report-html", ["jshint:dev", "file_append","open:report-html"]);
+
+    /**
+     * Create a build folder out of working copy - this would create a HTML based site structure.
+     * Note it does not include any json/HTML services. If you need to include then add the service folder to build
+     * copy task.
+     */
+    grunt.registerTask('build', ["clean:build", "copy:build", "file_append"]);
+
+    /**
+     *
+     */
+    grunt.registerTask('minify-and-build', ["uglify", "cssmin:build", "clean:build", "copy:build", "file_append"]);
+
 };

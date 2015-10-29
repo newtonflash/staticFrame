@@ -6,7 +6,7 @@
  *   @author     < author name >  
  *   @site       < site name >
  */
-(function($, ns, window, document, undefined) {
+(function($, sf, window, document, undefined) {
 
     "use strict";
 
@@ -38,11 +38,11 @@
         /**
          * Initialize this object when document ready event is triggered
          */
-        $.subscribe(ns.events.INIT_MODULES, this.init);
-        $.subscribe(ns.events.WINDOW_LOAD, this.onLoad);
+        $.subscribe(sf.events.INIT_MODULES, this.init);
+        $.subscribe(sf.events.WINDOW_LOAD, this.onLoad);
 
     };
 
-    ns.global = new Global();
+    SF.global = new Global();
 
-})((typeof window.jQuery !== "undefined") ? window.jQuery : null, window.NameSpace || {}, window, window.document);
+})((typeof window.jQuery !== "undefined") ? window.jQuery : null, window.SF || {}, window, window.document);

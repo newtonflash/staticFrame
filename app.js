@@ -19,8 +19,7 @@ app.use('/css',express.static(path.join(__dirname, 'public/css')));
 app.engine('.html', require('ejs').__express);
 app.set('view engine', siteConfig.templateEngine);
 
-require("./routes")(app, siteConfig, express);
-
+require("./core/routes")(app, siteConfig, express);
 
 var server = app.listen(siteConfig.portNo, function () {
 

@@ -12,7 +12,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -227,6 +227,10 @@ optgroup {
   font-weight: bold;
 }
 
+button:focus, input:focus, textarea:focus {
+  outline: none;
+}
+
 table {
   border-collapse: collapse;
   border: 0 none;
@@ -415,12 +419,6 @@ img.scale-h {
   width: auto;
 }
 
-.header .logo img.scaleH {
-  width: 100%;
-  height: auto;
-  margin: auto;
-}
-
 img.max-w {
   max-width: 100%;
 }
@@ -433,12 +431,28 @@ img.max-h {
   margin: 0 !important;
 }
 
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-padding-left {
+  padding-left: 0 !important;
+}
+
+.no-padding-right {
+  padding-right: 0 !important;
+}
+
 .no-margin-left {
   margin-left: 0 !important;
 }
 
 .no-margin-right {
   margin-right: 0 !important;
+}
+
+.center {
+  text-align: center;
 }
 
 * {
@@ -1354,7 +1368,6 @@ img.max-h {
 @-ms-viewport {
   width: device-width;
 }
-
 .visible-xs {
   display: none !important;
 }
@@ -1604,6 +1617,9 @@ img.max-h {
     display: none !important;
   }
 }
+/**
+ *  media queries
+ */
 /**
  *	Put default settings for html elements for your website. These style should work, if it does not carry any other class
  */
