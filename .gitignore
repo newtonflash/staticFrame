@@ -16,6 +16,10 @@ node_modules
 
 .idea/workspace.xml
 
+.idea/watcherTasks.xml
+
+.sass-cache
+
 views/test.html
 
 staticframe.sublime-project

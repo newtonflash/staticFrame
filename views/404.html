@@ -1,1 +1,60 @@
-<h1> Page not found </h1>
+<% include /components/global-components/html-header.ejs %>
+
+<body>
+
+<div style="text-align:center; margin-top:25vh; font-size:36px; color:#ccc;    ">
+    <h1 style="font-weight:600; line-height: 1em; margin-bottom: 40px;">
+        <span style="font-weight: 300; ">404 - </span> <span style="color:#777; font-weight: 700; ">Static</span><span style="font-weight:normal; color:red; font-weight: 300;">Frame</span>.
+    </h1>
+
+</div>
+<h2 class="center" style="font-weight: 300;">
+    You have discovered some new place. Unfortunately we dont live here. Find us <a href="/">here.</a>
+
+</h2>
+
+
+<% include /components/global-components/content-footer.ejs %>
+<% include /components/global-components/footer-library.ejs %>
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Open+Sans:300,400,600,700:latin' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+<style>
+    body{
+        font-family: "Open Sans", arial;
+    }
+    p{
+        margin-bottom: 20px;
+    }
+    a{
+        color:#888;
+    }
+    a:hover{
+        color:#f00;
+    }
+    .utility-links a ,
+    .credits a{
+        padding: 0 5px;
+    }
+
+    .utility-links{
+        margin-top:100px;
+    }
+    .utility-links a{
+        font-size: 1.2em;
+    }
+
+
+</style>
+</body>
