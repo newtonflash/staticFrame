@@ -37,7 +37,7 @@ module.exports = function(grunt) {
         cssmin: {
               '<%= meta.minCSSDir %>/ns.global.min.css':
                      	  [
-                     	   '<%= meta.srcCSSDir %>/global.css',
+                     	   '<%= meta.srcCSSDir %>/sf-global.css',
                      	   '<%= meta.srcCSSDir %>/modules.css'
                      	  ]
         },
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
               options: {
                 import: false
               },
-              src: ['<%= meta.srcCSSDir %>/global.css']
+              src: ['<%= meta.srcCSSDir %>/sf-global.css']
             }
         },
         jshint: {
@@ -190,7 +190,7 @@ module.exports = function(grunt) {
      * Note it does not include any json/HTML services. If you need to include then add the service folder to build
      * copy task.
      */
-    grunt.registerTask('build', ["clean:build", "copy:build", "file_append"]);
+    grunt.registerTask('build', ["clean", "copy", "file_append"]);
 
     /**
      *

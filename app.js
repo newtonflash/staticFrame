@@ -22,13 +22,11 @@ app.set('view engine', siteConfig.templateEngine);
 require("./core/routes")(app, siteConfig, express);
 
 var server = app.listen(siteConfig.portNo, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+console.log('StaticFrame app listening at http://%s:%s', host, port);
 
-  var host = server.address().address
-  var port = server.address().port
-
-  console.log('StaticFrame app listening at http://%s:%s', host, port);
-
-})
+});
 
 
 
