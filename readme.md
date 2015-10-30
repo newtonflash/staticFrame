@@ -149,7 +149,7 @@ $grunt build
 
 Minification :: Uglification of Javascript and  CSS minification only
 ```shell
-$grunt dev-minify
+$grunt minify
 ```
 
 
