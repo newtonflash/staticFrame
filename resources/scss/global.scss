@@ -1,10 +1,10 @@
 @charset "utf-8";
 
-@import "libs/staticframe/pre-init";
-@import "libs/staticframe/utils";
+@import "libs/staticframe/_sf-pre-init";
+@import "libs/staticframe/_sf-utils";
 @import "libs/bootstrap/bootstrap";
 
-@import "global-partials/constants";
-@import "global-partials/mixins";
-@import "components/defaults";
-@import "components/global-components";
+@import "global-partials/_sf-constants";
+@import "global-partials/_sf-mixins";
+@import "components/_sf-defaults";
+@import "components/_sf-global-components";

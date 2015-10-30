@@ -1,6 +1,3 @@
-/**
- *   StaticFrame browser reset code
- */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +15,7 @@ html {
 body {
   margin: 0;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
@@ -27,8 +24,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 audio, canvas, progress, video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
+  zoom: 1;
   vertical-align: baseline;
 }
 
@@ -44,14 +40,13 @@ a {
   background: transparent;
   text-decoration: none;
 }
-
-/*Remove the gray background color from active links in IE 10*/
-a:active, a:hover {
+a:active {
   outline: 0;
 }
-
+a:hover {
+  outline: 0;
+}
 a:focus {
-  /*outline: thin dotted;outline: 5px auto -webkit-focus-ring-color;*/
   outline-offset: -2px;
 }
 
@@ -107,7 +102,6 @@ ul, ol {
 
 nav ul, nav ol {
   list-style: none;
-  list-style-image: none;
   margin: 0;
   padding: 0;
 }
@@ -141,10 +135,11 @@ pre {
 q {
   quotes: none;
 }
-
-q:before, q:after {
+q:before {
   content: "";
-  content: none;
+}
+q:after {
+  content: "";
 }
 
 button[disabled]
@@ -160,8 +155,7 @@ select {
 button, input, select, textarea {
   font-size: inherit;
   margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
+  vertical-align: middle;
   line-height: inherit;
   color: inherit;
 }
@@ -172,7 +166,7 @@ input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
-  *overflow: visible;
+  overflow: visible;
 }
 
 button, input {
@@ -195,8 +189,8 @@ input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
-  *width: 13px;
-  *height: 13px;
+  width: 13px;
+  height: 13px;
 }
 
 input[type="search"] {
@@ -219,7 +213,7 @@ input[type="number"]::-webkit-outer-spin-button {
 button[disabled],
 legend {
   border: 0;
-  *margin-left: -7px;
+  margin-left: -7px;
   white-space: normal;
 }
 
@@ -247,7 +241,7 @@ pre {
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.42857143;
+  line-height: 1.5;
   word-break: break-all;
   word-wrap: break-word;
   color: #333333;
@@ -255,7 +249,6 @@ pre {
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
-
 pre code {
   padding: 0;
   font-size: inherit;
@@ -265,29 +258,12 @@ pre code {
   border-radius: 0;
 }
 
-code {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
-  white-space: nowrap;
-  border-radius: 4px;
-}
-
 @media print {
   /* ===This is commented as we require background color and background images to be printed.
   *{background:transparent !important;color:black !important;	box-shadow:none !important;		text-shadow:none !important;}
   */
   a, a:visited {
     text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
   }
 
   .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
@@ -322,11 +298,11 @@ code {
 }
 .hidden {
   display: none !important;
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .clearfix:before,
@@ -340,7 +316,7 @@ code {
 }
 
 .clearfix {
-  *zoom: 1;
+  zoom: 1;
 }
 
 .outOfView {
@@ -378,9 +354,8 @@ code {
   background-repeat: no-repeat;
   text-align: left;
   direction: ltr;
-  *line-height: 0;
+  line-height: 0;
 }
-
 .ir br {
   display: none;
 }
@@ -413,16 +388,13 @@ img.scale-w {
   width: 100%;
   height: auto;
 }
-
 img.scale-h {
   height: 100%;
   width: auto;
 }
-
 img.max-w {
   max-width: 100%;
 }
-
 img.max-h {
   max-height: 100%;
 }
@@ -452,7 +424,7 @@ img.max-h {
 }
 
 .center {
-  text-align: center;
+  text-align: center !important;
 }
 
 * {
@@ -1617,9 +1589,9 @@ img.max-h {
     display: none !important;
   }
 }
-/**
- *  media queries
- */
+/*
+ * Mixins allow document authors to define patterns of property value pairs, which can then be reused in other rule-sets.
+*/
 /**
  *	Put default settings for html elements for your website. These style should work, if it does not carry any other class
  */
@@ -1631,3 +1603,7 @@ body {
 p {
   margin-bottom: .5em;
 }
+
+/*
+ * Include CSS for Global Components
+*/

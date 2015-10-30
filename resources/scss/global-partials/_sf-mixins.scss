@@ -1,12 +1,11 @@
-// creates a basic font declaration
- 
+/*
+ * Mixins allow document authors to define patterns of property value pairs, which can then be reused in other rule-sets.
+*/
 @mixin font($size, $height){
   font-size: $size;
   line-height: $height;
 }
 
-// apply transform for all browsers
-// example: @include transform( rotate(-180deg) )
 @mixin transform($params) {
   @include css3-prefix('transform', $params);
 }
@@ -18,7 +17,6 @@
   #{$property}: #{$value};
 }
 
-// standard prefixes
 @function prefix($property, $prefixes: (webkit moz o ms)) {
     $vendor-prefixed-properties: transform background-clip background-size;
     $result: ();
@@ -43,11 +41,7 @@
     @return $prefixed;
 }
  
-
-
-// develops multibrowser transition code 
-// example: @include transition(transform 0.2s ease-in 0.2s, opacity 0.2s ease);
-@mixin transition($values...) { 
+@mixin transition($values...) {
     $transitions: ();
     @each $declaration in $values {
         $prop: nth($declaration, 1);
@@ -65,17 +59,23 @@
     -o-transition: trans-prefix($transitions, o);
     transition: $values;
 }
-
-
-
-
-
-/**
- *  media queries
- */
-
-@mixin mediaDesktop {
-  @media screen and (min-width:1025px) {
+@mixin mediaMobilePortraitOnly {
+  @media screen and (max-width:480px) {
+    @content;
+  }
+}
+@mixin mediaMobileLandscapeOnly {
+  @media screen and (min-width:481px) and (max-width:767px) {
+    @content;
+  }
+}
+@mixin mediaMobileOnly {
+  @media screen and (max-width:767px) {
+    @content;
+  }
+}
+@mixin mediaMobileAndTabletOnly {
+  @media screen and (max-width:1024px) {
     @content;
   }
 }
@@ -85,35 +85,13 @@
     @content;
   }
 }
-
 @mixin mediaTabletOnly {
   @media screen and (min-width:768px) and (max-width:1024px) {
     @content;
   }
 }
-
-@mixin mediaMobileOnly {
-  @media screen and (max-width:767px) {
+@mixin mediaDesktop {
+  @media screen and (min-width:1025px) {
     @content;
   }
 }
-
-@mixin mediaMobilePortraitOnly {
-  @media screen and (max-width:480px) {
-    @content;
-  }
-}
-
-@mixin mediaMobileLandscapeOnly {
-  @media screen and (min-width:481px) and (max-width:767px) {
-    @content;
-  }
-}
-
-
-@mixin mediaMobileAndTabletOnly {
-  @media screen and (max-width:1024px) {
-    @content;
-  }
-}
-
