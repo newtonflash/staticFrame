@@ -6,7 +6,7 @@
  *   @author     < author name >
  *   @site       < site name >
  */
-(function($, ns, window, document, undefined) {
+(function($, sf, window, document, undefined) {
 
     "use strict";
 
@@ -200,6 +200,6 @@
         }
     };
 
-    ns.ajaxService = new AjaxService();
+    sf.ajaxService = new AjaxService();
 
-})((typeof window.jQuery !== "undefined") ? window.jQuery : null, window.NameSpace || {}, window, window.document);
+})((typeof window.jQuery !== "undefined") ? window.jQuery : null, SF, window, window.document);

@@ -1,10 +1,6 @@
 /*
  * Mixins allow document authors to define patterns of property value pairs, which can then be reused in other rule-sets.
 */
-@mixin font($size, $height){
-  font-size: $size;
-  line-height: $height;
-}
 
 @mixin transform($params) {
   @include css3-prefix('transform', $params);
@@ -59,39 +55,67 @@
     -o-transition: trans-prefix($transitions, o);
     transition: $values;
 }
-@mixin mediaMobilePortraitOnly {
-  @media screen and (max-width:480px) {
-    @content;
-  }
-}
-@mixin mediaMobileLandscapeOnly {
-  @media screen and (min-width:481px) and (max-width:767px) {
-    @content;
-  }
-}
-@mixin mediaMobileOnly {
-  @media screen and (max-width:767px) {
-    @content;
-  }
-}
-@mixin mediaMobileAndTabletOnly {
-  @media screen and (max-width:1024px) {
+/**
+ * media querries
+ * 1. Desktop first approach ( matching with bootstrap grid points )
+ * 2. Mobile first approach // commented as of now. If you need it then comment the  mobile first mixings
+ */
+
+// Desktop first approach
+@mixin XSVP {
+  @media screen and (max-width:479px) {
     @content;
   }
 }
 
-@mixin mediaTablet {
-  @media screen and (min-width:768px) {
-    @content;
-  }
+@mixin SVP {
+    @media screen and (max-width:767px) {
+        @content;
+    }
 }
-@mixin mediaTabletOnly {
-  @media screen and (min-width:768px) and (max-width:1024px) {
-    @content;
-  }
+
+@mixin MVP {
+    @media screen and (max-width:991px) {
+        @content;
+    }
 }
-@mixin mediaDesktop {
-  @media screen and (min-width:1025px) {
-    @content;
-  }
+
+@mixin LVP {
+    @media screen and (max-width:1199px) {
+        @content;
+    }
 }
+
+@mixin XLVP {
+    @media screen and (max-width:1599px) {
+        @content;
+    }
+}
+
+// Mobile first approach
+/*
+@mixin SVP {
+    @media screen and (min-width:480px) {
+        @content;
+    }
+}
+
+@mixin MVP {
+    @media screen and (min-width:768px) {
+        @content;
+    }
+}
+
+@mixin LVP {
+    @media screen and (min-width:992px) {
+        @content;
+    }
+}
+
+@mixin XLVP {
+    @media screen and (min-width:1200px) {
+        @content;
+    }
+}
+*/
+

@@ -1,6 +1,6 @@
-/** Global configuration file , which includes environment configurations, global functions
- * 
- *	@dependency jquery.js
+/**
+ * Global configuration file , which includes environment configurations, global functions
+ *    @dependency jquery.js
  **/
 
 var SF = SF || {};
@@ -8,125 +8,140 @@ var SF = SF || {};
 SF.cfg = SF.cfg || {};
 SF.events = SF.events || {};
 
-(function ($, sf, window, document, undefined){
-	(function(){
-		var ua = navigator.userAgent,
-			isDevEnv = (location.host.indexOf("localhost") !== -1)? 1 : -1 ,
-			html = document.getElementsByTagName("html")[0];
+(function ($, sf, window, document, undefined) {
+    (function () {
+        var ua = navigator.userAgent,
+            isDevEnv = (location.host.indexOf("localhost") !== -1) ? 1 : -1,
+            html = document.getElementsByTagName("html")[0];
 
-		sf.events = sf.events || {};
-		sf.cfg = sf.cfg || {};
-		sf.cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
-		sf.cfg.isAndroid = /Android/i.test(ua);
-		sf.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua) || /Trident\/7\./.test(ua);
-		sf.cfg.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(ua);
-		sf.cfg.isTouchEnabled = (function is_touch_device() {
-			return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-		})();
+        sf.events = sf.events || {};
+        sf.cfg = sf.cfg || {};
+        sf.cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
+        sf.cfg.isAndroid = /Android/i.test(ua);
+        sf.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua) || /Trident\/7\./.test(ua);
+        sf.cfg.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(ua);
+        sf.cfg.isTouchEnabled = (function is_touch_device() {
+            return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+        })();
 
-		if(ua.match(/Windows Phone/i)){
-			html.classList.add("win-phone");
-		}
+        if (ua.match(/Windows Phone/i)) {
+            html.classList.add("win-phone");
+        }
 
-		if(ua.match(/iemobile/i)){
-			html.classList.add("ie-mobile");
-		}
+        if (ua.match(/iemobile/i)) {
+            html.classList.add("ie-mobile");
+        }
 
-		if (sf.cfg.isAndroid) html.classList.add("android");
-		if (!sf.cfg.isMobile) html.classList.add("no-touch");
-		if (sf.cfg.isIE) html.classList.add("ie");
-		
-		sf.cfg.breakPoints ={
-			XSVP            :"screen and (min-width:0px) and (max-width:480px)",
-            SVP             :"screen and (min-width:480px) and (max-width:768px)",
-			MVP				:"screen and (min-width:769px) and (max-width:1024px)",
-			LVP				:"screen and (min-width:1025px) and (max-width:1280px)",
-			XLVP			:"screen and (min-width:1281px)"
-		}
+        if (sf.cfg.isAndroid) html.classList.add("android");
+        if (!sf.cfg.isMobile) html.classList.add("no-touch");
+        if (sf.cfg.isIE) html.classList.add("ie");
 
-		sf.events = {
-			WINDOW_RESIZE : "sf/resize",
-			WINDOW_LOAD : "sf/load",
-			SCROLL : "sf/scroll",
-			INIT_MODULES : "sf/init/",
+        /**
+         *  based on desktop first approach.
+         *  Add your custom media querry here and add the same name in events as well so that it can trigger
+         */
 
-            VIEWPORT_CHANGE : "sf/viewport/change/",
-            VIEWPORT_XSVP:"sf/viewport/extraSmall",
-            VIEWPORT_SVP:"sf/viewport/small",
-            VIEWPORT_MVP:"sf/viewport/medium",
-            VIEWPORT_LVP:"sf/viewport/large",
-            VIEWPORT_XLVP:"sf/viewport/extraLarge"
-		}
-		sf.cfg.viewport = sf.events.VIEWPORT_XLVP;
+        sf.cfg.breakPoints = {
+            XSVP: "screen and (max-width:479px)",
+            SVP: "screen and (max-width:767px)",
+            MVP: "screen and (max-width:991px)",
+            LVP: "screen and (max-width:1199px)",
+            XLVP: "screen and (max-width:1599px)",
+            XSVP_ONLY: "screen and (min-width:0px) and (max-width:479px)",
+            SVP_ONLY: "screen and (min-width:480px) and (max-width:767px)",
+            MVP_ONLY: "screen and (min-width:768px) and (max-width:991px)",
+            LVP_ONLY: "screen and (min-width:992px) and (max-width:1199px)",
+            XLVP_ONLY: "screen and (min-width:1200px) and (max-width:1599px)"
+        }
 
-	})();
+        sf.events = {
+            WINDOW_RESIZE: "sf/resize",
+            WINDOW_LOAD: "sf/load",
+            SCROLL: "sf/scroll",
+            INIT_MODULES: "sf/init/",
 
-	/** Global functionality that needs to be placed before anything happens on the page.
-	 *  1. Resize event binding, and publishing
-	 *  2. Scroll binding based on IE or other browser
-	 *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
-	 **/
-	$(document).ready(function(){
-        var uniqueBreakPointRegex = /\bXSVP\b|\bSVP\b|\bMVP\b|\bLVP\b|\bXLVP\b/;
+            VIEWPORT_CHANGE: "sf/viewport/change/",
+            XSVP: "sf/viewport/extraExtraSmallViewport",
+            SVP: "sf/viewport/smallViewPort",
+            MVP: "sf/viewport/mediumViewPort",
+            LVP: "sf/viewport/largeViewPort",
+            XLVP: "sf/viewport/extraLargeScreen",
+            XSVP_ONLY: "sf/viewport/extraSmallViewPortOnly",
+            SVP_ONLY: "sf/viewport/smallViewPortOnly",
+            MVP_ONLY: "sf/viewport/mediumViewPortOnly",
+            LVP_ONLY: "sf/viewport/largeViewPortOnly",
+            XLVP_ONLY: "sf/viewport/extraLargeViewPortOnly"
+        }
 
-		sf.root = $('body'); // this is for caching body for faster search inside it.
+    })();
 
-		// avoid subscribing to WINDOW_RESIZE event where ever possible
-		$(window).resize($.throttle( 250, function(){
-			$.publish(sf.events.WINDOW_RESIZE);
-		}));
+    /** Global functionality that needs to be placed before anything happens on the page.
+     *  1. Resize event binding, and publishing
+     *  2. Scroll binding based on IE or other browser
+     *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
+     **/
+    $(document).ready(function () {
+        var uniqueBreakPointRegex = /\bXSVP_ONLY\b|\bSVP_ONLY\b|\bMVP_ONLY\b|\bLVP_ONLY\b|\bXLVP_ONLY\b/;
 
-		if( sf.cfg.isIE ){
-			$(window).scroll( $.throttle( 500, function(){
-				$.publish(sf.events.SCROLL);
-			}));
-		} else{
-			$(window).scroll( $.throttle( 20, function(){
-				$.publish(sf.events.SCROLL);
-			}));
-		}
-		// for first time before module initialization
-		for (breakPoint in sf.cfg.breakPoints) {
-			mediaQuery = sf.cfg.breakPoints[breakPoint];
-			if (matchMedia(mediaQuery).matches) {
-				if (uniqueBreakPointRegex.test(breakPoint)) {
-					sf.cfg.viewport = breakPoint;
-				}
-			}
-		}
+        sf.root = $('body'); // this is for caching body for faster search inside it.
 
-		$.publish(sf.events.INIT_MODULES);
+        // avoid subscribing to WINDOW_RESIZE event where ever possible
+        $(window).resize($.throttle(250, function () {
+            $.publish(sf.events.WINDOW_RESIZE);
+        }));
 
-		// publish events on viewport change based on media queries, after document ready
-		for ( var breakPoint in  sf.cfg.breakPoints){
+        if (sf.cfg.isIE) {
+            $(window).scroll($.throttle(500, function () {
+                $.publish(sf.events.SCROLL);
+            }));
+        } else {
+            $(window).scroll($.throttle(20, function () {
+                $.publish(sf.events.SCROLL);
+            }));
+        }
 
-			(function(breakName, mediaQuery){
-				var handler = function(data){
-					if(data.matches){
-						var vpAlias = "VIEWPORT_"+breakName;
-						$.publish(sf.events[vpAlias], true);
+        // for first time before module initialization
+        for (breakPoint in sf.cfg.breakPoints) {
+            mediaQuery = sf.cfg.breakPoints[breakPoint];
+            if (matchMedia(mediaQuery).matches) {
+                if (uniqueBreakPointRegex.test(breakPoint)) {
+                    sf.cfg.viewport = breakPoint;
+                }
+            }
+        }
 
-						if(uniqueBreakPointRegex.test(breakName)) {
-							sf.cfg.viewport = breakName;
-							$.publish(sf.events.VIEWPORT_CHANGE);
-						}
-					} else {
-						$.publish(sf.events["VIEWPORT_"+breakName], false);
-					}
-				};
-				handler({
-					media: mediaQuery,
-					matches: matchMedia(mediaQuery).matches
-				});
-				window.matchMedia(mediaQuery).addListener(handler);
+        $.publish(sf.events.INIT_MODULES);
 
-			})(breakPoint, sf.cfg.breakPoints[breakPoint]);
-		};
+        // publish events on viewport change based on media queries, after document ready
+        for (var breakPoint in  sf.cfg.breakPoints) {
+            (function (breakName, mediaQuery) {
+                var handler = function (data) {
+                    if (data.matches) {
+                        var vpAlias = breakName;
+                        $.publish(sf.events[vpAlias], true);
 
-	});
-	$(window).load(function(){
-		$.publish(sf.events.WINDOW_LOAD);
-	});
+                        if (uniqueBreakPointRegex.test(breakName)) {
+                            sf.cfg.viewport = breakName;
+                            $.publish(sf.events.VIEWPORT_CHANGE);
+                        }
+                    } else {
+                        $.publish(sf.events[breakName], false);
+                    }
+                };
+                handler({
+                    media: mediaQuery,
+                    matches: matchMedia(mediaQuery).matches
+                });
+                window.matchMedia(mediaQuery).addListener(handler);
+
+            })(breakPoint, sf.cfg.breakPoints[breakPoint]);
+        }
+
+    });
+
+    $(window).load(function () {
+        $.publish(sf.events.WINDOW_LOAD);
+    });
 })(jQuery, SF, this, this.document);
 
 

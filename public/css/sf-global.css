@@ -2,6 +2,16 @@
   margin: 0;
   padding: 0;
   background-repeat: no-repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -18,7 +28,7 @@ body {
   line-height: 1.5;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+article, aside, details, figcaption, figure, footer, header, nav, section, summary {
   display: block;
 }
 
@@ -40,10 +50,7 @@ a {
   background: transparent;
   text-decoration: none;
 }
-a:active {
-  outline: 0;
-}
-a:hover {
+a:active, a:hover {
   outline: 0;
 }
 a:focus {
@@ -425,19 +432,6 @@ img.max-h {
 
 .center {
   text-align: center !important;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .container {
@@ -1589,21 +1583,77 @@ img.max-h {
     display: none !important;
   }
 }
+/**
+ *   This is sample theme constant. Modify it as per your website
+ */
 /*
  * Mixins allow document authors to define patterns of property value pairs, which can then be reused in other rule-sets.
 */
 /**
- *	Put default settings for html elements for your website. These style should work, if it does not carry any other class
+ * media querries
+ * 1. Desktop first approach ( matching with bootstrap grid points )
+ * 2. Mobile first approach // commented as of now. If you need it then comment the  mobile first mixings
+ */
+/*
+@mixin SVP {
+    @media screen and (min-width:480px) {
+        @content;
+    }
+}
+
+@mixin MVP {
+    @media screen and (min-width:768px) {
+        @content;
+    }
+}
+
+@mixin LVP {
+    @media screen and (min-width:992px) {
+        @content;
+    }
+}
+
+@mixin XLVP {
+    @media screen and (min-width:1200px) {
+        @content;
+    }
+}
+*/
+/**
+ *	Put default settings for html elements for your website.
+ *  This file should contain only primary HTML tags instead of custom classes/ components
  */
 body {
   font: 14px/1.5em;
-  background-color: white;
+  background-color: #fff;
+  color: #333;
 }
 
 p {
-  margin-bottom: .5em;
+  margin-bottom: 20px;
 }
 
-/*
- * Include CSS for Global Components
-*/
+table {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 16px;
+}
