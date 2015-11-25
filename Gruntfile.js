@@ -73,7 +73,7 @@ module.exports = function(grunt) {
                   force:true
               },
               files: {
-                src:['public/js/*.js']
+                src:['public/js/*.js', '!public/js/sf.preinit.js', '!public/js/sf.jshint-reporter.js']
               }
           }
         },
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
               dev : {
                   path: 'http://localhost:'+siteConf.portNo+'/'
               },
-              report:{
+              jsreport:{
                   path: 'http://localhost:'+siteConf.portNo+'/dev-jshint-report.html'
               }
         },
@@ -160,22 +160,22 @@ module.exports = function(grunt) {
     /**
      * start grunt server and open index page in the default browser
      */
-    grunt.registerTask('open', ["express:dev","watch", "open:dev"]);
+    grunt.registerTask('server', ["express:dev","watch", "open:dev"]);
 
     /**
      * Open jshint report in browser
      */
-    grunt.registerTask("report-js", ["jshint:dev", "file_append","open:report-js"]);
+    grunt.registerTask("report-js", ["jshint:dev", "open:jsreport"]);
 
     /**
      * Open CSSlint report in browser
      */
-    grunt.registerTask("report-css", ["jshint:dev", "file_append","open:report-css"]);
+    //WIP grunt.registerTask("report-css", ["jshint:dev", "file_append","open:report-css"]);
 
     /**
      * Open HTML & accessibility issues in browser
      */
-    grunt.registerTask("report-html", ["jshint:dev", "file_append","open:report-html"]);
+    //WIP grunt.registerTask("report-html", ["jshint:dev", "file_append","open:report-html"]);
 
     /**
      * Create a build folder out of working copy - this would create a HTML based site structure.

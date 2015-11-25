@@ -52,7 +52,7 @@ SF.events = SF.events || {};
             MVP_ONLY: "screen and (min-width:768px) and (max-width:991px)",
             LVP_ONLY: "screen and (min-width:992px) and (max-width:1199px)",
             XLVP_ONLY: "screen and (min-width:1200px) and (max-width:1599px)"
-        }
+        };
 
         sf.events = {
             WINDOW_RESIZE: "sf/resize",
@@ -71,7 +71,7 @@ SF.events = SF.events || {};
             MVP_ONLY: "sf/viewport/mediumViewPortOnly",
             LVP_ONLY: "sf/viewport/largeViewPortOnly",
             XLVP_ONLY: "sf/viewport/extraLargeViewPortOnly"
-        }
+        };
 
     })();
 
