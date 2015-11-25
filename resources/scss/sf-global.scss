@@ -1,9 +1,20 @@
 @charset "utf-8";
 
-@import "libs/staticframe/_sf-pre-init";
-@import "libs/staticframe/_sf-utils";
+//libraries
+@import "libs/staticframe/sf-pre-init";
+@import "libs/staticframe/sf-utils";
 @import "libs/bootstrap/bootstrap";
 
-@import "global-partials/_sf-constants";
-@import "global-partials/_sf-mixins";
-@import "components/_sf-defaults";
+//global utilities
+@import "global-partials/sf-constants";
+@import "global-partials/sf-fonts";
+@import "global-partials/sf-mixins";
+@import "global-partials/sf-icons";
+@import "global-partials/sf-layouts";
+
+//components
+@import "components/sf-defaults";
+
+//modules - if your site is small you can include modules in once single file,
+// else you can separate it out to another file
+@import "modules/sample-module";

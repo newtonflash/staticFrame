@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-accessibility": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-compass": "*",
     "grunt-contrib-copy": "*",
@@ -26,6 +25,7 @@
     "grunt-express-server": "*",
     "grunt-file-append": "0.0.6",
     "grunt-open": "*",
+    "grunt-ejs": "^0.3.0",
     "jshint-html-reporter": "*",
     "nodemon": "*"
   }

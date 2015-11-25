@@ -53,7 +53,7 @@ public                  : All Javascript, CSS, images, content-images goes here
     |- js               : Javascript folder 
      |- libs         : Put all third party javascripts here( un minified)
      |- min          : Folder for minified js files
-     - ns.jshint-reporter.js : JS file for JSHINT Report Generator (views/dev-jshint-report.html)
+     - sf.jshint-reporter.js : JS file for JSHINT Report Generator (views/dev-jshint-report.html)
     |- content-images   : Images that are expected to be author contributable
     |- images           : All images that are either used in CSS or part of development
     |- font             : Any custom font

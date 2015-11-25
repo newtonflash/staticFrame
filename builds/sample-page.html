@@ -33,5 +33,32 @@
 	<!-- include this for CSRF blocking else delete this block
 	<style>html{display:none;visibility:hidden;}</style> 
 	<script>if(self==top){document.documentElement.style.display = 'block' ; document.documentElement.style.visibility = 'visible' ; } else { top.location = self.location ;}</script> -->
-	<% include header-library.ejs %>
+	<!-- for simplicity we have taken the respond and match media polyfills directly as minified files and we recomend to exclude them from your header javascript library -->
+
+<!--[if lt IE 9]>
+	<script src="/js/min/respond.min.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 10]>
+	<script>window.matchMedia = null;</script>
+	<script src="/js/min/media.match.min.js" type="text/javascript"></script>
+<![endif]-->
+
+
+	<link rel="stylesheet" type="text/css" href="/css/sf-global.css" />
+
 </head>
+
+<body>
+<h1 class="center">Sample page</h1>
+<footer>
+</footer>	
+
+<script src="/js/libs/jquery-1.11.2.js"></script>
+<script src="/js/sf.preinit.js"></script>
+<script src="/js/services/sf.utils.js"></script>
+<script src="/js/services/sf.ajaxservice.js"></script>
+<script src="/js/services/sf.validationservice.js"></script>
+<script src="/js/sf.global.js"></script>
+
+</body>
+</html>

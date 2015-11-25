@@ -6,34 +6,33 @@ module.exports = function(grunt) {
     var siteConf = config();
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        meta: {            
+        meta: {
             srcJSDir: 'public/js',
             minJSDir: 'public/js/min',
             srcCSSDir: 'public/css',
             minCSSDir:'public/css/min',
-            buildFolder : "builds",
-            buildVersion:"0.1.0",
+            buildFolder : "builds"
         },
-        
+
         uglify: {
           main:{
             options: {
-              mangle: false              
+              mangle: false
             },
             files: {
-                '<%= meta.minJSDir %>/ns.libs.min.js': 
+                '<%= meta.minJSDir %>/ns.libs.min.js':
                       [
-                        '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js', 
+                        '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js',
                         '<%= meta.srcJSDir %>/sf.preinit.js'
                       ],
-                '<%= meta.minJSDir %>/ns.custom.min.js': 
+                '<%= meta.minJSDir %>/ns.custom.min.js':
                       [
-                        '<%= meta.srcJSDir %>/libs/jquery.validate.js',                    
+                        '<%= meta.srcJSDir %>/libs/jquery.validate.js',
                         '<%= meta.srcJSDir %>/sf.global.js'
                       ]
             }
           }
-        },          
+        },
         cssmin: {
               '<%= meta.minCSSDir %>/ns.global.min.css':
                      	  [
@@ -47,21 +46,11 @@ module.exports = function(grunt) {
         copy:{
              main: {
               files: [
-                { expand: true,  cwd: 'public/css/min/' , src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/css/' },
-                { expand: true,  cwd: 'public/js/min/',   src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/js/' },
-                { expand: true,  cwd: 'public/images/',   src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/images/' },
-                { expand: true,  cwd: 'public/fonts/',    src:'**', dest: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/fonts/' }
+                { expand: true,  cwd: 'public/css/' , src:['**/*.css', "!jshint-reporter.css"], dest: '<%= meta.buildFolder %>/css/' },
+                { expand: true,  cwd: 'public/js/',   src:['**/*.js', "!sf.jshint-reporter.js"], dest: '<%= meta.buildFolder %>/js/' },
+                { expand: true,  cwd: 'public/images/',   src:'**', dest: '<%= meta.buildFolder %>/images/' },
+                { expand: true,  cwd: 'public/fonts/',    src:'**', dest: '<%= meta.buildFolder %>/fonts/' }
               ]
-            }
-        },
-        accessibility: {
-            options : {
-                accessibilityLevel: 'WCAG2A',
-                verbose: false,
-                outputFormat:"json"
-            },
-            test : {
-              src: ['http://localhost:3100/index.html']
             }
         },
         csslint: {
@@ -86,13 +75,6 @@ module.exports = function(grunt) {
               files: {
                 src:['public/js/*.js']
               }
-          },
-          build:{
-              options: {
-                  reporter: require('jshint-html-reporter'),
-                  reporterOutput: '<%= meta.buildFolder %>/build-<%= meta.buildVersion %>jshint-report.html'
-              },
-              all: ['<%= meta.buildFolder %>/build-<%= meta.buildVersion %>/assets/js/**/*.js']
           }
         },
         open:{
@@ -100,7 +82,7 @@ module.exports = function(grunt) {
                   path: 'http://localhost:'+siteConf.portNo+'/'
               },
               report:{
-                  path: 'http://localhost:'+siteConf.portNo+'/dev-jshint-report.html' 
+                  path: 'http://localhost:'+siteConf.portNo+'/dev-jshint-report.html'
               }
         },
         compass: {
@@ -138,20 +120,29 @@ module.exports = function(grunt) {
           default_options: {
             files: [
               {
-                append: "<script src='https://code.jquery.com/jquery-1.11.3.js'></script><script src='/js/ns.jshint-reporter.js'></script><link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'>",
+                append: "<script src='https://code.jquery.com/jquery-1.11.3.js'></script><script src='/js/sf.jshint-reporter.js'></script><link rel='stylesheet' type='text/css' href='/css/jshint-reporter.css'>",
                 input: 'views/dev-jshint-report.html',
                 output:'views/dev-jshint-report.html'
               }
             ]
           }
-        }
+        },
+        ejs:{
+            build:{
+                options : siteConf,
+                cwd:"views/",
+                src:['**/*.html', "!dev-jshint-report.html","!404.html"],
+                dest: 'builds/',
+                expand: true,
+                ext: ".html"
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-accessibility');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-open');
@@ -159,6 +150,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-file-append');
+    grunt.loadNpmTasks('grunt-ejs');
 
     /**
      * Start grunt server
@@ -190,11 +182,11 @@ module.exports = function(grunt) {
      * Note it does not include any json/HTML services. If you need to include then add the service folder to build
      * copy task.
      */
-    grunt.registerTask('build', ["clean", "copy", "file_append"]);
+    grunt.registerTask('build', ["clean", "copy", "ejs:build"]);
 
     /**
-     *
+     * Same as build but only exports minified files
      */
-    grunt.registerTask('minify-and-build', ["uglify", "cssmin:build", "clean:build", "copy:build", "file_append"]);
+    grunt.registerTask('minify-and-build', ["uglify", "cssmin:build", "clean:build", "copy:build"]);
 
 };
