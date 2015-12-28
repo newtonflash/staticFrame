@@ -10,7 +10,8 @@
     "method-override": "*",
     "errorhandler": "^1.1.1",
     "debug": "~2.0.0",
-    "ejs": "1.0.0"
+    "ejs": "1.0.0",
+    "serve-index" : "1.7.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

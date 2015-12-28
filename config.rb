@@ -6,8 +6,10 @@ images_dir = "public/images/"
 fonts_dir = "public/fonts"
 javascripts_dir = "public/js"
 
-output_style = :expanded
-#output_style = :compressed
+sourcemap = true
+
+#output_style = :expanded
+output_style = :compressed
 environment = :development
 
 
