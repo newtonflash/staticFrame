@@ -1,0 +1,37 @@
+// put your base styles here.
+
+
+body {
+  font: 14px/1.5em;
+  background-color: $BODY_BG_COLOR;
+  color: $BODY_COPY_COLOR;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: $H1_FONT_SIZE;
+}
+
+h2 {
+  font-size: $H2_FONT_SIZE;
+}
+
+h3 {
+  font-size: $H3_FONT_SIZE;
+}
+
+h4 {
+  font-size: $H4_FONT_SIZE;
+}
