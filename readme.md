@@ -44,10 +44,12 @@ builds                  : Autometically generated on grunt command
 node_modules            : Contains node modules. Ignore this folder ( even in your editor preferences) 
 public                  : All Javascript, CSS, images, content-images goes here
     |- css              : folder for generated CSS files
-     |- min             : Minified css to be kept here
+        |- min          : Minified css to be kept here
     |- js               : Javascript folder 
-     |- libs         : Put all third party javascripts here( un minified)
-     |- min          : Folder for minified js files
+        |- libs         : Put all third party javascripts here( un minified)
+        |- min          : Folder for minified js files
+        |- components   : contains components
+        |- modules      : Add your modules if you really need any page/story specific code
     |- content-images   : Images that are expected to be author contributable( if you are using any CMS)
     |- images           : All images that are either used in CSS or system images.
     |- font             : Any custom font
@@ -60,7 +62,9 @@ Resources
         |- modules      : CSS for different modules of the website. Sample Provided.
         |- themes       : The theme for the website has to be included here
     |- sprite-source    : sprite psd files
-routes                  : Contains routing of pages. Edit it if required.
+    |- ts               : If you are using typescript, add your code here in the same structure as that of js in public folder
+core
+    |- routes           : Contains routing of pages. Edit it if required.
 views                   : Put your html templates here.
     |-components        : Contains markup for components of website.
         |-global-components : Contains markup for global components of website.
