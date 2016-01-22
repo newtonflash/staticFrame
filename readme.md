@@ -108,7 +108,7 @@ $grunt server
 
 Report :: Generate JSHINT Report and open dev-jshint-report.html 
 ```shell
-$grunt report
+$grunt report-js
 ```
 
 Build :: Uglification of Javascript, css minification, jshint error reporting for your dev environment 

@@ -33,7 +33,7 @@ SF.events = SF.events || {};
         }
 
         if (sf.cfg.isAndroid) html.classList.add("android");
-        if (!sf.cfg.isMobile) html.classList.add("no-touch");
+        if (!sf.cfg.isMobile) html.classList.add("mobile");
         if (sf.cfg.isIE) html.classList.add("ie");
 
         /**
