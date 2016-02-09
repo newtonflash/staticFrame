@@ -3,6 +3,13 @@ module.exports = function (app, siteConfig, express){
 
 	app.use("/*.html", function(req, res){
 		var fullUrl = req.originalUrl.substring(1,req.originalUrl.length).split(".html").join("");
+
+
+		if(typeof req.query.prod !== undefined && req.query.prod){
+			siteConfig.environment = "prod";
+		} else {
+			siteConfig.environment = "dev";
+		}
 		fullUrl = fullUrl.split("?")[0];
 		if(fullUrl !== "/"){
 			res.render(fullUrl, siteConfig);
