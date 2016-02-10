@@ -45,4 +45,4 @@
 
     SF.global = new Global();
 
-})((typeof window.jQuery !== "undefined") ? window.jQuery : null, window.SF || {}, window, window.document);
+})(jQuery, window.SF || {}, window, window.document);

@@ -3,7 +3,7 @@
  *    @dependency jquery.js
  **/
 
-var SF = SF || {};
+var SF = window.SF || {};
 
 SF.cfg = SF.cfg || {};
 SF.events = SF.events || {};
@@ -11,11 +11,11 @@ SF.events = SF.events || {};
 (function ($, sf, window, document, undefined) {
     (function () {
         var ua = navigator.userAgent,
-            isDevEnv = (location.host.indexOf("localhost") !== -1) ? 1 : -1,
             html = document.getElementsByTagName("html")[0];
 
         sf.events = sf.events || {};
         sf.cfg = sf.cfg || {};
+        sf.cfg.isDevEnv = (location.host.indexOf("localhost") !== -1) ? 1 : -1;
         sf.cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
         sf.cfg.isAndroid = /Android/i.test(ua);
         sf.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua) || /Trident\/7\./.test(ua);
@@ -81,7 +81,8 @@ SF.events = SF.events || {};
      *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
      **/
     $(document).ready(function () {
-        var uniqueBreakPointRegex = /\bXSVP_ONLY\b|\bSVP_ONLY\b|\bMVP_ONLY\b|\bLVP_ONLY\b|\bXLVP_ONLY\b/;
+        var uniqueBreakPointRegex = /\bXSVP_ONLY\b|\bSVP_ONLY\b|\bMVP_ONLY\b|\bLVP_ONLY\b|\bXLVP_ONLY\b/,
+            mediaQuery;
 
         sf.root = $('body'); // this is for caching body for faster search inside it.
 
@@ -117,8 +118,7 @@ SF.events = SF.events || {};
             (function (breakName, mediaQuery) {
                 var handler = function (data) {
                     if (data.matches) {
-                        var vpAlias = breakName;
-                        $.publish(sf.events[vpAlias], true);
+                        $.publish(sf.events[breakName], true);
 
                         if (uniqueBreakPointRegex.test(breakName)) {
                             sf.cfg.viewport = breakName;
@@ -136,7 +136,6 @@ SF.events = SF.events || {};
 
             })(breakPoint, sf.cfg.breakPoints[breakPoint]);
         }
-
     });
 
     $(window).load(function () {
