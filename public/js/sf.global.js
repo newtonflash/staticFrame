@@ -12,14 +12,14 @@
 
     var Global = function() {
         /**
-         *            add all event listeners
+         * add all event listeners
          */
         var initEventListeners = function() {
 
         };
 
         /**
-         *            put all event triggers, plugin initializations
+         * put all event triggers, plugin initializations
          */
         var initEventTriggers = function() {
 
