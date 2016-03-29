@@ -43,6 +43,6 @@
 
     };
 
-    SF.global = new Global();
+    sf.global = new Global();
 
 })(jQuery, window.SF || {}, window, window.document);

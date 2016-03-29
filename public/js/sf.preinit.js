@@ -8,7 +8,38 @@ var SF = window.SF || {};
 SF.cfg = SF.cfg || {};
 SF.events = SF.events || {};
 
-(function ($, sf, window, document, undefined) {
+
+SF.extend = function(ns){
+    'use strict';
+
+    var parts = ns.split( '.'),
+        parent = this,
+        pl,
+        i;
+
+    if ( parts[ 0 ] === 'SF' ) {
+
+        parts = parts.slice( 1 );
+
+    }
+
+    for ( i = 0, pl = parts.length; i < pl; i++ ) {
+
+        // Create a property if it doesn't exist
+        if ( typeof parent[ parts[ i ] ] === 'undefined' ) {
+
+            parent[ parts[ i ] ] = {};
+
+        }
+
+        parent = parent[ parts[ i ] ];
+
+    }
+
+    return parent;
+};
+
+;(function ($, sf, window, document, undefined) {
     (function () {
         var ua = navigator.userAgent,
             html = document.getElementsByTagName("html")[0];
