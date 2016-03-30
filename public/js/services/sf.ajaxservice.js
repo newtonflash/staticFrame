@@ -44,10 +44,12 @@
                 errorCallBack = options.error;
 
             if(serviceURL && serviceURL !== ""){
+
                 //abort the service if called multiple times before one service cycle ends
                 if(requestQueue[serviceName] && options.allowMultiple == false){
                     requestQueue[serviceName].abort();
                 }
+
                 ajaxParams = {
                     url: options.url,
                     cache: options.cache,

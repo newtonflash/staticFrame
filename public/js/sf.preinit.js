@@ -1,12 +1,9 @@
 /**
- * Global configuration file , which includes environment configurations, global functions
+ *    Global configuration file , which includes environment configurations, global functions that are needed to run any module.
  *    @dependency jquery.js
  **/
 
 var SF = window.SF || {};
-
-SF.cfg = SF.cfg || {};
-SF.events = SF.events || {};
 
 
 SF.extend = function(ns){
@@ -18,40 +15,31 @@ SF.extend = function(ns){
         i;
 
     if ( parts[ 0 ] === 'SF' ) {
-
         parts = parts.slice( 1 );
-
     }
 
     for ( i = 0, pl = parts.length; i < pl; i++ ) {
-
-        // Create a property if it doesn't exist
         if ( typeof parent[ parts[ i ] ] === 'undefined' ) {
-
             parent[ parts[ i ] ] = {};
-
         }
-
         parent = parent[ parts[ i ] ];
-
     }
-
     return parent;
 };
 
 ;(function ($, sf, window, document, undefined) {
     (function () {
         var ua = navigator.userAgent,
-            html = document.getElementsByTagName("html")[0];
+            html = document.getElementsByTagName("html")[0],
+            cfg = sf.extend("SF.cfg"),
+            events = sf.extend("SF.events");
 
-        sf.events = sf.events || {};
-        sf.cfg = sf.cfg || {};
-        sf.cfg.isDevEnv = (location.host.indexOf("localhost") !== -1) ? 1 : -1;
-        sf.cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
-        sf.cfg.isAndroid = /Android/i.test(ua);
-        sf.cfg.isIE = /MSIE (\d+\.\d+);/.test(ua) || /Trident\/7\./.test(ua);
-        sf.cfg.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(ua);
-        sf.cfg.isTouchEnabled = (function is_touch_device() {
+        cfg.isDevEnv = (location.host.indexOf("localhost") !== -1) ? 1 : -1;
+        cfg.isIOS = /iPad/i.test(ua) || /iPhone/i.test(ua);
+        cfg.isAndroid = /Android/i.test(ua);
+        cfg.isIE = /MSIE (\d+\.\d+);/.test(ua) || /Trident\/7\./.test(ua);
+        cfg.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(ua);
+        cfg.isTouchEnabled = (function is_touch_device() {
             return (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
         })();
 
@@ -63,16 +51,16 @@ SF.extend = function(ns){
             html.classList.add("ie-mobile");
         }
 
-        if (sf.cfg.isAndroid) html.classList.add("android");
-        if (!sf.cfg.isMobile) html.classList.add("mobile");
-        if (sf.cfg.isIE) html.classList.add("ie");
+        if (cfg.isAndroid) html.classList.add("android");
+        if (!cfg.isMobile) html.classList.add("mobile");
+        if (cfg.isIE) html.classList.add("ie");
 
         /**
          *  based on desktop first approach.
          *  Add your custom media querry here and add the same name in events as well so that it can trigger
          */
 
-        sf.cfg.breakPoints = {
+        cfg.breakPoints = {
             XSVP: "screen and (max-width:479px)",
             SVP: "screen and (max-width:767px)",
             MVP: "screen and (max-width:991px)",
@@ -111,6 +99,7 @@ SF.extend = function(ns){
      *  2. Scroll binding based on IE or other browser
      *  3. Setting up mediaQuery breakpoints and adding eventlisteners to trigger publishing VIEWPORT_CHANGE EVENT
      **/
+
     $(document).ready(function () {
         var uniqueBreakPointRegex = /\bXSVP_ONLY\b|\bSVP_ONLY\b|\bMVP_ONLY\b|\bLVP_ONLY\b|\bXLVP_ONLY\b/,
             mediaQuery;
