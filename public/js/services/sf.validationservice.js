@@ -7,11 +7,11 @@
  *   @author     < your name >
  */
 
-;(function($, ns, window, document, undefined) {
+;(function($, sf, window, document, undefined) {
 
     "use strict";
 
-    ns.validation = $.extend(true, {}, ns.validation || {}, {
+    sf.validation = $.extend(true, {}, sf.validation || {}, {
         errorPlacement: function(error, element) {
             $(element).closest(".form-item").append(error);
         },
@@ -45,13 +45,13 @@
             },
             defaultValidationSettings = {
                 onkeyup:        false,
-                onfocusout:     ns.validation.onfocusout,
-                highlight:      ns.validation.highlight,
-                unhighlight:    ns.validation.unhighlight,
-                rules:          ns.validation.rules,
-                messages:       ns.validation.messages,
-                errorPlacement: ns.validation.errorPlacement,
-                success:        ns.validation.success,
+                onfocusout:     sf.validation.onfocusout,
+                highlight:      sf.validation.highlight,
+                unhighlight:    sf.validation.unhighlight,
+                rules:          sf.validation.rules,
+                messages:       sf.validation.messages,
+                errorPlacement: sf.validation.errorPlacement,
+                success:        sf.validation.success,
                 ignore:         ".ignore",
                 submitHandler:  function(form) {
                     var formData = $(form).data("formData");
@@ -71,7 +71,7 @@
                         formData.ajaxSettings.url = $form.attr("action") || $form.attr("data-ajax-url");
                         formData.ajaxSettings.data = (formData.customAjaxData !== null)? formData.customAjaxData : $form.serialize();
 
-                        ns.ajaxService.post( ajaxName, formData.ajaxSettings);
+                        sf.ajaxService.post( ajaxName, formData.ajaxSettings);
 
                     } else {
                         // default submit, it would refresh the page.
@@ -106,6 +106,6 @@
         };
     };
 
-    ns.validationService = new ValidationService();
+    sf.validationService = new ValidationService();
 
-})((typeof window.jQuery !== "undefined") ? window.jQuery : null, window.ASX || {}, window, window.document);
+})(jQuery, window.SF || {}, window, window.document);
