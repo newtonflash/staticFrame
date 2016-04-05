@@ -2,16 +2,15 @@ module.exports = function( grunt ) {
 
     'use strict';
 
-    grunt.config( 'watch', {
-        compass :{
-            files: ['resources/scss/**'],
-            tasks: ['compass:compiled']
-        },
-        express:{
-            files:  ['app.js', 'routes/*'],
-            tasks:  ['express:dev']
+    grunt.config( 'express', {
+        dev :{
+            options: {
+                script: 'app.js'
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
+
 };
+
