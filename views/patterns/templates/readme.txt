@@ -1,0 +1,1 @@
+Keep your layout templates in this folder if you are using handlebars. For EJS templates, it's not required, because EJS does not support layouts.

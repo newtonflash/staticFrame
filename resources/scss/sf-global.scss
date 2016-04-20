@@ -8,17 +8,21 @@
 //global utilities
 @import "global-partials/sf-constants";
 @import "global-partials/sf-fonts";
+@import "global-partials/sf-base";
 @import "global-partials/sf-mixins";
-@import "global-partials/sf-icons";
+
 @import "global-partials/sf-layouts";
 
+//insert your theme constants here
+@import "themes/default/constants";
+
 //components
-@import "components/sf-sample-component";
+@import "patterns/atoms/button";
+@import "patterns/atoms/icons";
+
 
 //modules - if your site is small you can include modules in once single file,
 // else you can separate it out to another file
-@import "modules/sample-module";
-
-
+@import "modules/home-page";
 
 

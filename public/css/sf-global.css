@@ -1614,6 +1614,41 @@ img.max-h {
   font-weight: 800;
   src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url(http://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hhampu5_7CjHW5spxoeN3Vs.woff2) format("woff2"), url(http://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hqRDOzjiPcYnFooOUGCOsRk.woff) format("woff");
 }
+body {
+  font: 14px/1.5em;
+  background-color: #fff;
+  color: #333;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
 /*
  * Mixins allow document authors to define patterns of property value pairs, which can then be reused in other rule-sets.
 */
@@ -1650,9 +1685,5 @@ img.max-h {
 /*
   Icons used across the site can be globaly added here.
 */
-/**
- *	Put default settings for html elements for your website.
- *  This file should contain only primary HTML tags instead of custom classes/ components
- */
 
 /*# sourceMappingURL=sf-global.css.map */
