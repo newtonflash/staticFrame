@@ -57,11 +57,11 @@ module.exports = function(grunt) {
      * Note it does not include any json/HTML services. If you need to include then add the service folder to build
      * copy task.
      */
-    grunt.registerTask('build', ["clean", "copy", "ejs:build"]);
+    grunt.registerTask('build', ["clean", "copy"]);
 
     /**
      * Same as build but only exports minified files
      */
-    grunt.registerTask('minify-and-build', ["uglify", "cssmin:build", "clean:build", "copy:build"]);
+    grunt.registerTask('minify-and-build', ["uglify", "cssmin", "clean:build", "copy:minifiedBuild"]);
 
 };

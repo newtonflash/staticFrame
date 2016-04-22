@@ -3,7 +3,13 @@ module.exports = function( grunt ) {
     'use strict';
 
     grunt.config( 'clean', {
-        folder: "builds/"
+        main : {
+            folder: "builds/"
+        },
+        build : {
+            folder: "builds/"
+        }
+
     });
     grunt.loadNpmTasks('grunt-contrib-clean');
 
