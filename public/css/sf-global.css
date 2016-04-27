@@ -1584,9 +1584,6 @@ img.max-h {
   }
 }
 /**
- *   This is sample theme constant. Modify it as per your website
- */
-/**
 *   put Web Font information here
 *   below is the example sample font
 */
@@ -1614,6 +1611,9 @@ img.max-h {
   font-weight: 800;
   src: local("Open Sans Extrabold"), local("OpenSans-Extrabold"), url(http://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hhampu5_7CjHW5spxoeN3Vs.woff2) format("woff2"), url(http://fonts.gstatic.com/s/opensans/v13/EInbV5DfGHOiMmvb1Xr-hqRDOzjiPcYnFooOUGCOsRk.woff) format("woff");
 }
+/**
+ *   This is sample theme constant. Modify it as per your website
+ */
 body {
   font: 14px/1.5em;
   background-color: #fff;
