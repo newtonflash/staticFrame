@@ -5,16 +5,14 @@
 @import "libs/staticframe/sf-utils";
 @import "libs/bootstrap/bootstrap";
 
+//insert your theme constants here
+@import "themes/default/fonts";
+@import "themes/default/constants";
+
 //global utilities
-@import "global-partials/sf-constants";
-@import "global-partials/sf-fonts";
 @import "global-partials/sf-base";
 @import "global-partials/sf-mixins";
-
 @import "global-partials/sf-layouts";
-
-//insert your theme constants here
-@import "themes/default/constants";
 
 //components
 @import "patterns/atoms/button";
@@ -24,5 +22,3 @@
 //modules - if your site is small you can include modules in once single file,
 // else you can separate it out to another file
 @import "modules/home-page";
-
-
