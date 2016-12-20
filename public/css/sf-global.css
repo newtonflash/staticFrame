@@ -431,7 +431,7 @@ img.max-h {
 }
 
 .center {
-  text-align: center !important;
+  text-align: center;
 }
 
 .container {
@@ -1616,8 +1616,8 @@ img.max-h {
  */
 body {
   font: 14px/1.5em;
-  background-color: #fff;
-  color: #333;
+  background-color: white;
+  color: black;
 }
 
 p {
@@ -1631,22 +1631,6 @@ table {
 h1, h2, h3, h4, h5 {
   line-height: 1em;
   margin-bottom: 20px;
-}
-
-h1 {
-  font-size: 48px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-h3 {
-  font-size: 22px;
-}
-
-h4 {
-  font-size: 16px;
 }
 
 /*
@@ -1682,8 +1666,29 @@ h4 {
     }
 }
 */
-/*
-  Icons used across the site can be globaly added here.
-*/
+.tile {
+  width: 25%;
+  min-height: 300px;
+  background-color: #f0f0f0;
+}
+.tile__header {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  background-color: #2F6FAD;
+}
+.tile__title {
+  margin-bottom: 0;
+}
+.tile__body {
+  background-color: #eeeeee;
+  padding: 10px;
+}
+.tile__desc--large {
+  font-size: 1.1em;
+}
+.tile__desc--small {
+  font-size: .8em;
+}
 
 /*# sourceMappingURL=sf-global.css.map */

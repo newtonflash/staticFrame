@@ -3,13 +3,18 @@
  */
 
 //==============================================================  COLORS ===============//
-$BODY_BG_COLOR      : #fff;
-$BODY_COPY_COLOR    : #333;
-$ANCHOR_COLOR       : #069;
-$ANCHOR_HOVER_COLOR : #09F;
+$body_bg_color      : #fff !default;
+$body_copy_color    : #333 !default;
+$anchor_color       : #069 !default;
+$anchor_hover_color : #09f !default;
 
 //==============================================================  TYPOGRAPHY ===========//
-$H1_FONT_SIZE       : 48px;
-$H2_FONT_SIZE       : 36px;
-$H3_FONT_SIZE       : 22px;
-$H4_FONT_SIZE       : 16px;
+$h1_font_size       : 48px;
+$h2_font_size       : 36px;
+$h3_font_size       : 22px;
+$h4_font_size       : 16px;
+
+//==============================================================  Z-INDEX  =============//
+$Z-INDEX-POPUP              : 3100;
+$Z-INDEX-MOBILE-MENU        : 3000;
+

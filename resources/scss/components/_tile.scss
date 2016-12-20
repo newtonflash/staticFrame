@@ -1,0 +1,31 @@
+.tile{
+    width:25%;
+    min-height: 300px;
+    background-color: #f0f0f0;
+
+
+    &__header{
+        color:white;
+        text-align: center;
+        padding:10px;
+        background-color: #2F6FAD;
+    }
+
+    &__title{
+        margin-bottom: 0;
+    }
+
+    &__body{
+        background-color: #eeeeee;
+        padding:10px;
+    }
+
+    &__desc{
+        &--large{
+            font-size:1.1em;
+        }
+        &--small{
+            font-size: .8em;
+        }
+    }
+}

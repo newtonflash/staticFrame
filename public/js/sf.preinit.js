@@ -27,6 +27,8 @@ SF.extend = function(ns){
     return parent;
 };
 
+
+
 ;(function ($, sf, window, document, undefined) {
     (function () {
         var ua = navigator.userAgent,

@@ -1,0 +1,27 @@
+.footer{
+    background-color: #0b97c4;
+    color:white;
+    min-height: 300px;
+    padding: 20px 0;
+
+    &__main{
+
+    }
+
+    &__auxillary{
+        text-transform: uppercase;
+
+        &-nav{
+            li{
+                display: inline-block;
+                padding:0 15px;
+            }
+            a{
+                color:yellow;
+            }
+        }
+        &-right{
+            text-align: right;
+        }
+    }
+}
