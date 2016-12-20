@@ -8,12 +8,12 @@ module.exports = function( grunt ) {
                 mangle: false
             },
             files: {
-                '<%= meta.minJSDir %>/ns.libs.min.js':
+                '<%= meta.minJSDir %>/sf.libs.min.js':
                     [
                         '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js',
                         '<%= meta.srcJSDir %>/sf.preinit.js'
                     ],
-                '<%= meta.minJSDir %>/ns.custom.min.js':
+                '<%= meta.minJSDir %>/sf.custom.min.js':
                     [
                         '<%= meta.srcJSDir %>/libs/jquery.validate.js',
                         '<%= meta.srcJSDir %>/sf.global.js'
