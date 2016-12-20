@@ -11,11 +11,11 @@ module.exports = function( grunt ) {
                 '<%= meta.minJSDir %>/sf.libs.min.js':
                     [
                         '<%= meta.srcJSDir %>/libs/jquery-1.11.2.js',
-                        '<%= meta.srcJSDir %>/sf.preinit.js'
+                        '<%= meta.srcJSDir %>/libs/sf.preinit.js',
+                        '<%= meta.srcJSDir %>/libs/jquery.validate.js'
                     ],
                 '<%= meta.minJSDir %>/sf.custom.min.js':
                     [
-                        '<%= meta.srcJSDir %>/libs/jquery.validate.js',
                         '<%= meta.srcJSDir %>/sf.global.js'
                     ]
             }

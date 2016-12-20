@@ -10,7 +10,7 @@ module.exports = function( grunt ) {
                 force:true
             },
             files: {
-                src:['public/js/*.js', '!public/js/sf.preinit.js', '!public/js/sf.jshint-reporter.js']
+                src:['public/js/*.js', '!public/libs/*.js']
             }
         }
     });
