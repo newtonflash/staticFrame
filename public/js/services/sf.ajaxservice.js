@@ -30,7 +30,8 @@
                 preLoader:false,
                 preLoaderTarget:null,
                 allowMultiple:false,
-                loadTarget:""
+                loadTarget:"",
+                ignoreResponseData : false
             },
             defaultPostOptions = $.extend(true,{} ,defaults , {
                 type:"POST"
@@ -92,12 +93,12 @@
 
                         }
                         //Show generic error message if response has "HTML or BODY" tag in response Object
-                         if( options.format === 'html' && response.indexOf('<body') !== -1 && response.indexOf('<html') !== -1) {
-                            if(options.execDefaultErrorHandler === true  || typeof errorCallBack === "function") {
-                                genericErrorHandler(errorCallBack, options);
+                        if (options.dataType.toLowerCase() === 'html' && response.indexOf('<body') !== -1 && response.indexOf('<html') !== -1) {
+                            if (options.defaultErrorHandler === true || typeof errorCallBack === "function") {
+                                genericErrorHandler(errorCallBack, options, "HTML source code of a page.", serviceName);
                             }
                             return;
-                         }
+                        }
 
 
                         if (response !== "" && response != null) {
@@ -105,9 +106,9 @@
                             closePreloader(options);
 
                             //Show genric error message if response status is GENERIC_ERROR
-                            if(hasProperty(response, "status") && typeof response.status === 'string' && response.status.toUpperCase() == "GENERIC_ERROR"){
-                                if (options.execDefaultErrorHandler === true || typeof errorCB === "function"){
-                                    genericErrorHandler(errorCB, options);
+                            if (hasProperty(response, "status") && typeof response.status === 'string' && response.status.toUpperCase() == "GENERIC_ERROR") {
+                                if (options.defaultErrorHandler === true || typeof errorCallBack === "function") {
+                                    genericErrorHandler(errorCallBack, options, "", serviceName);
                                 }
                             }
 
@@ -121,7 +122,7 @@
                         } else {
                             if (options.defaultErrorHandler === true || typeof errorCallBack === "function") {
                                 closePreloader(options);
-                                genericErrorHandler(errorCallBack, options);
+                                genericErrorHandler(errorCallBack, options, "", serviceName);
                             }
                         }
                     },
